@@ -117,6 +117,21 @@
     "notes": "官方产品技术页；页面未公开独立发布日期，publishedAt 取本次访问快照日期。"
   },
   {
+    "id": "source-li-auto-l9-news-159",
+    "title": "全新一代理想L9正式发布",
+    "publisher": "理想汽车",
+    "url": "https://www.lixiang.com/news/159.html",
+    "publishedAt": "2026-05-15",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "li-auto-m100",
+      "li-auto-l9-livis-2026"
+    ],
+    "notes": "官方新闻，披露全新一代理想L9搭载两颗马赫M100，总算力2560 TOPS，并于5月17日起开启交付。"
+  },
+  {
     "id": "source-nio-et9",
     "title": "蔚来ET9 智能电动行政旗舰轿车",
     "publisher": "蔚来",
@@ -205,6 +220,21 @@
     "notes": "NVIDIA 官方博客，披露 G9 双 Orin、508 TOPS、交付时间等。"
   },
   {
+    "id": "source-xiaomi-pilot",
+    "title": "智能驾驶",
+    "publisher": "小米汽车",
+    "url": "https://www.xiaomiev.com/pilot",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xiaomi-yu7-2026",
+      "nvidia-thor"
+    ],
+    "notes": "官方辅助驾驶页，披露小米实际装车辅助驾驶算力为700 TOPS，并说明采用NVIDIA DRIVE AGX Thor车载计算平台。"
+  },
+  {
     "id": "source-xiaomi-su7",
     "title": "新一代SU7",
     "publisher": "小米汽车",
@@ -231,7 +261,7 @@
       "xiaomi-yu7-2026",
       "nvidia-thor"
     ],
-    "notes": "官方车型页，披露 YU7 搭载 NVIDIA DRIVE AGX Thor 车载计算平台。"
+    "notes": "官方车型页，披露 YU7 搭载 NVIDIA DRIVE AGX Thor 车载计算平台；装车算力以小米辅助驾驶页/配置表的700 TOPS为准。"
   },
   {
     "id": "source-xpeng-g9-config",

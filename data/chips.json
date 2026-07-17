@@ -221,7 +221,7 @@
       "source-xiaomi-yu7"
     ],
     "lastUpdated": "2026-07-17",
-    "notes": "小米 YU7 官方页披露全系标配 NVIDIA DRIVE AGX Thor 车载计算平台。"
+    "notes": "NVIDIA官方页披露Thor SoC平台最高规格；小米YU7实际装车辅助驾驶算力为700 TOPS，不能用本条1000 INT8 TOPS替代车型口径。"
   },
   {
     "id": "xpeng-turing-ai",

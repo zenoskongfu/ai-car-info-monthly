@@ -86,8 +86,8 @@
     "brand": "理想",
     "model": "L9 Livis",
     "modelYear": 2026,
-    "releaseDate": "2026-06-15",
-    "deliveryDate": null,
+    "releaseDate": "2026-05-15",
+    "deliveryDate": "2026-05-17",
     "chipIds": [
       "li-auto-m100"
     ],
@@ -99,8 +99,8 @@
       "sparse": null,
       "officialSource": true,
       "comparable": false,
-      "calculationMethod": "source_reported",
-      "notes": "公开报道与官方技术页指向双 M100；单芯片精度未披露，因此整车总算力也不可直接比较。"
+      "calculationMethod": "official_total",
+      "notes": "理想官方新闻披露两颗马赫M100总算力2560 TOPS；单芯片精度未披露，因此整车总算力也不可直接比较。"
     },
     "drivingSystem": "AD5.0 / Livis",
     "automationLevel": "L2++",
@@ -120,10 +120,11 @@
     ],
     "status": "mass_production",
     "sourceIds": [
-      "source-li-auto-autodrive"
+      "source-li-auto-autodrive",
+      "source-li-auto-l9-news-159"
     ],
     "lastUpdated": "2026-07-17",
-    "notes": "L9 Livis 作为理想自研芯片代表车型跟踪；交付日期需继续核验官方交付公告。"
+    "notes": "L9 Livis 作为理想自研芯片代表车型跟踪；发布时间与交付时间来自理想官方新闻。"
   },
   {
     "id": "nio-et9-2025",
@@ -224,24 +225,24 @@
     ],
     "chipCount": 1,
     "totalCompute": {
-      "value": 1000,
+      "value": 700,
       "unit": "TOPS",
-      "precision": "INT8",
+      "precision": "unknown",
       "sparse": null,
       "officialSource": true,
       "comparable": false,
-      "calculationMethod": "source_reported",
-      "notes": "车型页披露搭载 NVIDIA DRIVE AGX Thor；平台页披露 Thor 最高 1000 INT8 TOPS / 2000 FP4 FLOPs，不能与 FP4 或未知精度混排。"
+      "calculationMethod": "official_total",
+      "notes": "小米官方辅助驾驶页/配置表披露实际装车辅助驾驶算力为700 TOPS；这不同于NVIDIA开发者页的Thor SoC最高1000 INT8 TOPS平台上限，报告采用车型装车口径。"
     },
     "drivingSystem": "小米HAD辅助驾驶",
     "automationLevel": "L2++",
     "sensors": {
       "lidar": 1,
-      "camera": 7,
+      "camera": 11,
       "millimeterWaveRadar": null,
       "fourDRadar": 1,
-      "ultrasonicRadar": null,
-      "notes": "官方页披露全系标配激光雷达、4D毫米波雷达、高清摄像头、超声波雷达、7颗超透防眩摄像头；完整数量需继续核验配置表。"
+      "ultrasonicRadar": 12,
+      "notes": "小米官方配置表披露激光雷达1个、4D毫米波雷达1个、超声波雷达12个、车外摄像头11个。"
     },
     "capabilities": [
       "城市NOA",
@@ -249,6 +250,7 @@
     ],
     "status": "announced",
     "sourceIds": [
+      "source-xiaomi-pilot",
       "source-xiaomi-yu7",
       "source-nvidia-drive-agx"
     ],
