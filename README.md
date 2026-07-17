@@ -64,9 +64,9 @@ GitHub Actions 每月 1 日北京时间约 8:00 触发，也支持 `workflow_dis
 
 ## 邮件通知
 
-月报 workflow 创建 PR 后会运行 `scripts/send-report-email.py`。默认收件人为 `zenos.chen@foxmail.com`；如果仓库未配置 SMTP secrets，脚本会自动跳过，不影响月报生成。
+当前邮件通知仅在本地手动发送，不由 GitHub Actions 自动发送。可使用 `scripts/send-report-email.py` 发送月报邮件，默认收件人为 `zenos.chen@foxmail.com`。
 
-需要在 GitHub repository secrets 中配置：
+本地发送时需要设置环境变量：
 
 - `SMTP_HOST`
 - `SMTP_USER`
@@ -77,6 +77,8 @@ GitHub Actions 每月 1 日北京时间约 8:00 触发，也支持 `workflow_dis
 - `SMTP_PORT`，默认 `465`
 - `SMTP_FROM`
 - `SMTP_SECURE`，默认 `true`
+
+GitHub Actions 目前只生成月报和 PR，不发送邮件。
 
 ## 数据可靠性原则
 

@@ -22,13 +22,6 @@ jobs:
       SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY }}
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
       REPORT_MONTH: ${{ inputs.report_month }}
-      REPORT_NOTIFY_TO: zenos.chen@foxmail.com
-      SMTP_HOST: ${{ secrets.SMTP_HOST }}
-      SMTP_PORT: ${{ secrets.SMTP_PORT }}
-      SMTP_USER: ${{ secrets.SMTP_USER }}
-      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-      SMTP_FROM: ${{ secrets.SMTP_FROM }}
-      SMTP_SECURE: ${{ secrets.SMTP_SECURE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -94,15 +87,6 @@ jobs:
             - `npm test`
             - `npm run generate`
 
-            ## 邮件通知
-
-            workflow 会在 PR 创建后尝试向 `zenos.chen@foxmail.com` 发送邮件；未配置 SMTP secrets 时会自动跳过。
-
             ## 当前仍不确定的信息
 
             详见月报总览“传闻和待确认信息”章节。
-
-      - name: Send email notification
-        env:
-          PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
-        run: python3 scripts/send-report-email.py
