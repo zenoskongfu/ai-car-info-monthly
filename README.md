@@ -60,6 +60,24 @@ npm run generate
 
 GitHub Actions 每月 1 日北京时间约 8:00 触发，也支持 `workflow_dispatch` 手动运行。默认创建 `report/YYYY-MM` 分支并提交 Pull Request，不直接合并到 `main`。
 
+月报分支按月份命名，例如 `report/2026-07`、`report/2026-08`。这样每个月的自动更新都有独立分支和 PR，便于复核、回滚和保留历史。
+
+## 邮件通知
+
+月报 workflow 创建 PR 后会运行 `scripts/send-report-email.py`。默认收件人为 `zenos.chen@foxmail.com`；如果仓库未配置 SMTP secrets，脚本会自动跳过，不影响月报生成。
+
+需要在 GitHub repository secrets 中配置：
+
+- `SMTP_HOST`
+- `SMTP_USER`
+- `SMTP_PASSWORD`
+
+可选配置：
+
+- `SMTP_PORT`，默认 `465`
+- `SMTP_FROM`
+- `SMTP_SECURE`，默认 `true`
+
 ## 数据可靠性原则
 
 官方来源优先；关键参数尽量双来源交叉验证；单一来源必须在报告中标注；传闻不得混入正式数据；冲突信息优先采用官方最新口径并保留说明。
