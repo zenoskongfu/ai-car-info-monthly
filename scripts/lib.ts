@@ -87,8 +87,13 @@ export function sourceLabel(sourceId: string, sourceMap: Map<string, { title: st
 
 export async function listMonthlyReports(): Promise<string[]> {
   try {
-    const files = await readdir(path.join(rootDir, "docs/monthly"));
-    return files.filter((file) => /^\d{4}-\d{2}\.md$/.test(file)).sort().reverse();
+    const entries = await readdir(path.join(rootDir, "docs/monthly"), { withFileTypes: true });
+    const months = entries.flatMap((entry) => {
+      if (entry.isDirectory() && /^\d{4}-\d{2}$/.test(entry.name)) return [entry.name];
+      if (entry.isFile() && /^\d{4}-\d{2}\.md$/.test(entry.name)) return [entry.name.replace(".md", "")];
+      return [];
+    });
+    return Array.from(new Set(months)).sort().reverse();
   } catch {
     return [];
   }

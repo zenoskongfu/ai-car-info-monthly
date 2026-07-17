@@ -1,4 +1,5 @@
 import { existsSync } from "node:fs";
+import { rm } from "node:fs/promises";
 import path from "node:path";
 import {
   currentDate,
@@ -44,6 +45,7 @@ type Chip = Entity & {
 type Vehicle = Entity & {
   brand: string;
   model: string;
+  modelYear: number;
   releaseDate: string | null;
   deliveryDate: string | null;
   chipIds: string[];
@@ -121,6 +123,14 @@ function formatNullable(value: string | number | null) {
 
 function bulletSources(sourceIds: string[], sourceMap: Map<string, Source>) {
   return sourceIds.map((id) => sourceLabel(id, sourceMap)).join("；");
+}
+
+function sourceList(sources: Source[], sourceIds: string[]) {
+  const idSet = new Set(sourceIds);
+  return sources
+    .filter((source) => source.reliability === "high" && idSet.has(source.id))
+    .map((source) => `- [${source.publisher}：《${source.title}》](${source.url})`)
+    .join("\n");
 }
 
 function rowsForDiff(diff: MonthlyDiff, chips: Chip[], vehicles: Vehicle[], platforms: Platform[], otaUpdates: OtaUpdate[]) {
@@ -208,7 +218,7 @@ function groupProgress(vehicles: Vehicle[], brand: string) {
   return `### ${brand}\n\n${matched.map((vehicle) => `- ${vehicle.model}：${formatStatus(vehicle.status)}，智驾系统 ${formatNullable(vehicle.drivingSystem)}。`).join("\n")}\n`;
 }
 
-function renderReport(
+function renderOverviewReport(
   month: string,
   diff: MonthlyDiff,
   chips: Chip[],
@@ -218,7 +228,6 @@ function renderReport(
   sources: Source[]
 ) {
   const sourceMap = new Map(sources.map((source) => [source.id, source]));
-  const chipMap = new Map(chips.map((chip) => [chip.id, chip]));
   const addedCount = diff.chips.added.length + diff.vehicles.added.length + diff.platforms.added.length + diff.otaUpdates.added.length;
   const summary =
     addedCount === 0
@@ -243,6 +252,11 @@ function renderReport(
 > 数据截止时间：${currentDate()}  
 > 本报告区分已量产、已发布未量产和未经证实的传闻信息。
 
+## 阅读入口
+
+- [芯片篇](./chips.md)：聚焦芯片/计算平台本体、单芯片或平台算力、精度口径、量产状态和已确认搭载车型。
+- [装载车型篇](./vehicles.md)：聚焦车型年款、实际装车芯片数量、整车总算力、传感器、智驾系统和交付状态。
+
 ## 一、本月摘要
 
 ${summary}
@@ -253,67 +267,20 @@ ${summary}
 |---|---|---|---|---|---|
 ${rowsForDiff(diff, chips, vehicles, platforms, otaUpdates)}
 
-## 三、新增或更新的智驾芯片
-
-${chips.map((chip) => renderChip(chip, vehicles, sourceMap)).join("\n")}
-
-## 四、新增或更新的车型
-
-${vehicles.map((vehicle) => renderVehicle(vehicle, chipMap, sourceMap)).join("\n")}
-
-## 五、主要车企进展
+## 三、主要车企进展
 
 ${["理想", "小米", "小鹏", "蔚来", "华为鸿蒙智行", "比亚迪"].map((brand) => groupProgress(vehicles, brand)).join("\n")}
 ### 其他车企
 
 - 本期尚未纳入新增的吉利、极氪、长安、广汽、上汽、长城、零跑车型级变化，后续月报继续补充。
 
-## 六、主要芯片厂商进展
-
-### 英伟达
-
-- Orin-X 继续作为多款量产车型的高阶辅助驾驶计算平台；Thor 已进入小米 YU7 官方车型页，需持续跟踪更多量产交付。
-
-### 地平线
-
-- 征程6系列进入基础跟踪，官方披露系列算力覆盖 10 TOPS 至 560 TOPS。
-
-### 黑芝麻智能
-
-- 华山二号 A1000 进入基础跟踪；规格需要继续补官方来源。
-
-### 高通
-
-- 本期未记录可靠来源确认的 Snapdragon Ride 新增车型变化。
-
-### 华为
-
-- MDC 与乾崑智驾 ADS 进入平台跟踪；车型页通常不披露芯片与算力，需要按官方技术资料继续核验。
-
-        ### 车企自研芯片
-
-- 理想马赫 M100、蔚来神玑 NX9031、小鹏图灵 AI 芯片均已记录为量产相关实体；小鹏图灵已按当前车型页/配置表确认多款量产车型搭载。
-
-## 七、算力对比
-
-| 芯片 | 厂商 | 单芯片算力 | 精度 | 稀疏或稠密 | 算力说明 | 搭载车型 | 状态 |
-|---|---|---:|---|---|---|---|---|
-${chips
-  .map((chip) => {
-    const models = vehicles.filter((vehicle) => vehicle.chipIds.includes(chip.id)).map((vehicle) => `${vehicle.brand}${vehicle.model}`);
-    return `| ${chip.name} | ${chip.manufacturer} | ${chip.compute.value ?? "未公开"} ${chip.compute.unit === "unknown" ? "" : chip.compute.unit} | ${chip.compute.precision} | ${chip.compute.sparse === null ? "未说明" : chip.compute.sparse ? "稀疏" : "稠密"} | ${chip.compute.notes} | ${models.join("、") || "未确认"} | ${formatStatus(chip.status)} |`;
-  })
-  .join("\n")}
-
-不同精度、不同统计口径、稀疏与稠密算力不得直接做绝对排名。本期多数公开资料没有完整披露精度和稀疏口径，因此仅做事实表列，不做强弱排序。
-
-## 八、重大OTA与模型升级
+## 四、重大OTA与模型升级
 
 | 车企 | 系统版本 | 车型 | 主要升级 | 算力说明 | 推送状态 |
 |---|---|---|---|---|---|
 ${otaUpdates.map((update) => `| ${update.manufacturer} | ${update.system} ${update.version} | ${update.vehicleIds.join("、")} | ${update.highlights.join("、")} | 不涉及新增算力口径 | ${formatStatus(update.status)} |`).join("\n")}
 
-## 九、量产与交付进度
+## 五、量产与交付进度
 
 - 已量产：${chips.filter((chip) => chip.status === "mass_production").map((chip) => chip.name).join("、") || "无"}
 - 已开始交付：${vehicles.filter((vehicle) => vehicle.deliveryDate).map((vehicle) => `${vehicle.brand}${vehicle.model}`).join("、") || "无"}
@@ -321,13 +288,13 @@ ${otaUpdates.map((update) => `| ${update.manufacturer} | ${update.system} ${upda
 - 计划量产：${chips.filter((chip) => chip.status === "pre_production").map((chip) => chip.name).join("、") || "无"}
 - 未经证实：本期未将传闻写入结构化事实字段。
 
-## 十、传闻和待确认信息
+## 六、传闻和待确认信息
 
 本章节内容均为“未经官方确认”或“尚未完成双来源核验”，不得作为已确认事实引用。
 
 ${uncertain}
 
-## 十一、相比上月的变化
+## 七、相比上月的变化
 
 ### 新增
 
@@ -348,9 +315,9 @@ ${uncertain}
 
 ### 已撤回或无法确认的信息
 
-- 暂无撤回条目；未核验信息保留在第十节。
+- 暂无撤回条目；未核验信息保留在“传闻和待确认信息”章节。
 
-## 十二、趋势判断
+## 八、趋势判断
 
 以下为基于公开信息的分析，不写入结构化事实字段：
 
@@ -359,12 +326,112 @@ ${uncertain}
 - 国产智驾芯片从单点算力宣传转向与模型、操作系统、传感器和整车电子电气架构协同。
 - 端到端、VLA 和多模态模型已成为车企发布会核心叙事，但仍需要以 OTA 效果、交付范围和安全边界持续验证。
 
-## 十三、主要来源
+## 九、主要来源
 
 ${sources
   .filter((source) => source.reliability === "high")
   .map((source) => `- [${source.publisher}：《${source.title}》](${source.url})`)
   .join("\n")}
+`;
+}
+
+function renderChipsReport(month: string, chips: Chip[], vehicles: Vehicle[], sources: Source[]) {
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const chipSourceIds = chips.flatMap((chip) => chip.sourceIds);
+  return `# 国内智驾芯片与车型月报：${monthTitle(month)} 芯片篇
+
+> 数据截止时间：${currentDate()}  
+> 本篇只讨论芯片/计算平台本体，不把车型实际装车算力与芯片平台上限混用。
+
+## 一、阅读说明
+
+- 单芯片或平台算力记录在芯片实体中，实际装车/整车总算力请看[装载车型篇](./vehicles.md)。
+- 不同精度、不同统计口径、稀疏与稠密算力不得直接做绝对排名。
+- 无法确认精度或稀疏口径时，保留为 \`unknown\` 或“未说明”。
+
+## 二、新增或更新的智驾芯片
+
+${chips.map((chip) => renderChip(chip, vehicles, sourceMap)).join("\n")}
+
+## 三、主要芯片厂商进展
+
+### 英伟达
+
+- Orin-X 继续作为多款量产车型的高阶辅助驾驶计算平台；Thor 已进入小米当前车型官方资料，需持续跟踪更多量产交付。
+
+### 地平线
+
+- 征程6系列进入基础跟踪，官方披露系列算力覆盖 10 TOPS 至 560 TOPS。
+
+### 黑芝麻智能
+
+- 华山二号 A1000 进入基础跟踪；规格需要继续补官方来源。
+
+### 高通
+
+- 本期未记录可靠来源确认的 Snapdragon Ride 新增车型变化。
+
+### 华为
+
+- MDC 与乾崑智驾 ADS 进入平台跟踪；车型页通常不披露芯片与算力，需要按官方技术资料继续核验。
+
+### 车企自研芯片
+
+- 理想马赫 M100、蔚来神玑 NX9031、小鹏图灵 AI 芯片均已记录为量产相关实体；小鹏图灵已按当前车型页/配置表确认多款量产车型搭载。
+
+## 四、算力对比
+
+| 芯片 | 厂商 | 单芯片算力 | 精度 | 稀疏或稠密 | 算力说明 | 搭载车型 | 状态 |
+|---|---|---:|---|---|---|---|---|
+${chips
+  .map((chip) => {
+    const models = vehicles.filter((vehicle) => vehicle.chipIds.includes(chip.id)).map((vehicle) => `${vehicle.brand}${vehicle.model}`);
+    return `| ${chip.name} | ${chip.manufacturer} | ${chip.compute.value ?? "未公开"} ${chip.compute.unit === "unknown" ? "" : chip.compute.unit} | ${chip.compute.precision} | ${chip.compute.sparse === null ? "未说明" : chip.compute.sparse ? "稀疏" : "稠密"} | ${chip.compute.notes} | ${models.join("、") || "未确认"} | ${formatStatus(chip.status)} |`;
+  })
+  .join("\n")}
+
+## 五、主要来源
+
+${sourceList(sources, chipSourceIds)}
+`;
+}
+
+function renderVehiclesReport(month: string, vehicles: Vehicle[], chips: Chip[], sources: Source[]) {
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const chipMap = new Map(chips.map((chip) => [chip.id, chip]));
+  const vehicleSourceIds = vehicles.flatMap((vehicle) => vehicle.sourceIds);
+  return `# 国内智驾芯片与车型月报：${monthTitle(month)} 装载车型篇
+
+> 数据截止时间：${currentDate()}  
+> 本篇只讨论车型实际装车配置。芯片单颗或平台上限请看[芯片篇](./chips.md)。
+
+## 一、阅读说明
+
+- 车型总算力采用车企当前车型页、配置表或官方技术页披露的实际装车口径。
+- 芯片平台最高规格不能直接写成车型装车算力。
+- 当前车型优先使用当前款官方资料，旧款发布稿只能作为历史背景。
+
+## 二、新增或更新的车型
+
+${vehicles.map((vehicle) => renderVehicle(vehicle, chipMap, sourceMap)).join("\n")}
+
+## 三、车型装车算力表
+
+| 车企 | 车型 | 车型年款 | 智驾芯片 | 芯片数量 | 整车总算力 | 算力说明 | 当前状态 |
+|---|---|---:|---|---:|---|---|---|
+${vehicles
+  .map((vehicle) => {
+    const chipNames = vehicle.chipIds.map((id) => chipMap.get(id)?.name ?? id).join("、") || "官方未公开";
+    return `| ${vehicle.brand} | ${vehicle.model} | ${vehicle.modelYear} | ${chipNames} | ${vehicle.chipCount ?? "未公开"} | ${formatCompute(vehicle.totalCompute)} | ${vehicle.totalCompute.notes} | ${formatStatus(vehicle.status)} |`;
+  })
+  .join("\n")}
+
+## 四、主要车企进展
+
+${["理想", "小米", "小鹏", "蔚来", "华为鸿蒙智行", "比亚迪"].map((brand) => groupProgress(vehicles, brand)).join("\n")}
+## 五、主要来源
+
+${sourceList(sources, vehicleSourceIds)}
 `;
 }
 
@@ -377,9 +444,11 @@ export async function generateReport(month = currentReportMonth()) {
   const diffPath = `data/monthly-diffs/${month}.json`;
   const diff = existsSync(path.join(rootDir, diffPath)) ? await readJson<MonthlyDiff>(diffPath) : await buildMonthlyDiff(month);
 
-  const content = renderReport(month, diff, chips, vehicles, platforms, otaUpdates, sources);
-  await writeText(`docs/monthly/${month}.md`, content);
-  console.log(`Report written to docs/monthly/${month}.md`);
+  await rm(path.join(rootDir, `docs/monthly/${month}.md`), { force: true });
+  await writeText(`docs/monthly/${month}/index.md`, renderOverviewReport(month, diff, chips, vehicles, platforms, otaUpdates, sources));
+  await writeText(`docs/monthly/${month}/chips.md`, renderChipsReport(month, chips, vehicles, sources));
+  await writeText(`docs/monthly/${month}/vehicles.md`, renderVehiclesReport(month, vehicles, chips, sources));
+  console.log(`Report written to docs/monthly/${month}/index.md, chips.md, vehicles.md`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

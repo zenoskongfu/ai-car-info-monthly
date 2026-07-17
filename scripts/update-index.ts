@@ -15,8 +15,14 @@ export async function updateIndex() {
   const reports = await listMonthlyReports();
   const chips = await readJson<Chip[]>("data/chips.json");
   const vehicles = await readJson<Vehicle[]>("data/vehicles.json");
-  const latest = reports[0]?.replace(".md", "") ?? "暂无";
-  const latestLink = reports[0] ? `./monthly/${reports[0]}` : "";
+  const latest = reports[0] ?? "暂无";
+  const latestLink = reports[0] ? `./monthly/${reports[0]}/` : "";
+  const monthlyLinks = (month: string, prefix: string) =>
+    [
+      `- [${monthTitle(month)} 月报总览](${prefix}${month}/)`,
+      `- [${monthTitle(month)} 芯片篇](${prefix}${month}/chips.md)`,
+      `- [${monthTitle(month)} 装载车型篇](${prefix}${month}/vehicles.md)`
+    ].join("\n");
 
   const index = `# 国内智驾芯片与车型月报索引
 
@@ -24,11 +30,11 @@ export async function updateIndex() {
 
 ## 最新月报
 
-${reports[0] ? `- [${monthTitle(latest)}](${latestLink})` : "- 暂无月报"}
+${reports[0] ? `- [${monthTitle(latest)} 月报总览](${latestLink})\n- [${monthTitle(latest)} 芯片篇](./monthly/${latest}/chips.md)\n- [${monthTitle(latest)} 装载车型篇](./monthly/${latest}/vehicles.md)` : "- 暂无月报"}
 
 ## 历史月报
 
-${reports.length ? reports.map((file) => `- [${monthTitle(file.replace(".md", ""))}](./monthly/${file})`).join("\n") : "- 暂无"}
+${reports.length ? reports.map((month) => monthlyLinks(month, "./monthly/")).join("\n") : "- 暂无"}
 
 ## 数据概览
 
@@ -46,7 +52,7 @@ ${reports.length ? reports.map((file) => `- [${monthTitle(file.replace(".md", ""
 
 持续跟踪国内智能驾驶芯片、车型搭载、算力平台、辅助驾驶系统和量产进展。
 
-最新月报：${reports[0] ? `[${monthTitle(latest)}](./docs/monthly/${reports[0]})` : "暂无"}
+最新月报：${reports[0] ? `[${monthTitle(latest)} 月报总览](./docs/monthly/${latest}/)` : "暂无"}
 
 ## 项目用途
 
@@ -64,7 +70,7 @@ ${currentDate()}
 
 ## 月报入口
 
-${reports.length ? reports.map((file) => `- [${monthTitle(file.replace(".md", ""))}](./docs/monthly/${file})`).join("\n") : "- 暂无"}
+${reports.length ? reports.map((month) => monthlyLinks(month, "./docs/monthly/")).join("\n") : "- 暂无"}
 
 ## 数据文件结构
 

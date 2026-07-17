@@ -124,19 +124,30 @@ function assertDates(value: unknown, pointer = "$") {
 }
 
 async function assertReportsHaveCutoff() {
-  let files: string[] = [];
+  let entries: import("node:fs").Dirent[] = [];
   try {
-    files = await readdir(path.join(rootDir, "docs/monthly"));
+    entries = await readdir(path.join(rootDir, "docs/monthly"), { withFileTypes: true });
   } catch {
     return;
   }
-  for (const file of files.filter((name) => name.endsWith(".md"))) {
-    const content = await readFile(path.join(rootDir, "docs/monthly", file), "utf8");
-    if (!content.includes("数据截止时间：")) {
-      throw new Error(`docs/monthly/${file} is missing 数据截止时间`);
+  for (const entry of entries) {
+    if (entry.isFile() && entry.name.endsWith(".md")) {
+      const content = await readFile(path.join(rootDir, "docs/monthly", entry.name), "utf8");
+      if (!content.includes("数据截止时间：")) {
+        throw new Error(`docs/monthly/${entry.name} is missing 数据截止时间`);
+      }
+      if (!content.includes("## 十、传闻和待确认信息")) {
+        throw new Error(`docs/monthly/${entry.name} is missing rumor/uncertain section`);
+      }
     }
-    if (!content.includes("## 十、传闻和待确认信息")) {
-      throw new Error(`docs/monthly/${file} is missing rumor/uncertain section`);
+    if (entry.isDirectory() && /^\d{4}-\d{2}$/.test(entry.name)) {
+      for (const file of ["index.md", "chips.md", "vehicles.md"]) {
+        const reportPath = path.join(rootDir, "docs/monthly", entry.name, file);
+        const content = await readFile(reportPath, "utf8");
+        if (!content.includes("数据截止时间：")) {
+          throw new Error(`docs/monthly/${entry.name}/${file} is missing 数据截止时间`);
+        }
+      }
     }
   }
 }
