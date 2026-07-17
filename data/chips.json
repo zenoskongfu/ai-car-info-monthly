@@ -227,23 +227,23 @@
     "id": "xpeng-turing-ai",
     "name": "图灵AI芯片",
     "manufacturer": "小鹏汽车",
-    "status": "pre_production",
+    "status": "mass_production",
     "processNode": null,
     "compute": {
-      "value": null,
-      "unit": "unknown",
+      "value": 750,
+      "unit": "TOPS",
       "precision": "unknown",
       "sparse": null,
       "scope": "single_chip",
       "officialSource": true,
       "comparable": false,
-      "notes": "官方披露为 AI 大模型定制、40 核处理器、2 个 NPU、可运行最高 30B 参数模型，但未披露可用于横向比较的 TOPS 口径。"
+      "notes": "小鹏官方车型配置表披露1颗图灵AI芯片对应整车有效算力750 TOPS，3颗图灵AI芯片对应2250 TOPS；该值为小鹏“有效算力”口径，未披露INT8/稀疏等可横向比较精度。"
     },
     "memoryBandwidth": null,
     "powerConsumption": null,
     "architecture": "DSA 神经网络特定领域架构",
     "releaseDate": "2024-08-27",
-    "massProductionDate": null,
+    "massProductionDate": "2025-07-03",
     "supportedModels": [
       "端到端驾驶模型",
       "大语言模型",
@@ -251,9 +251,12 @@
     ],
     "sourceIds": [
       "source-xpeng-turing-page",
-      "source-xpeng-news-5355"
+      "source-xpeng-news-5355",
+      "source-xpeng-mona-m03-2026-config",
+      "source-xpeng-g7-launch",
+      "source-xpeng-p7-launch"
     ],
     "lastUpdated": "2026-07-17",
-    "notes": "官方新闻披露 2024-08-23 流片成功；未确认量产搭载车型。"
+    "notes": "官方新闻披露2024-08-23流片成功；G7、全新P7、MONA M03等车型已公开搭载。"
   }
 ]

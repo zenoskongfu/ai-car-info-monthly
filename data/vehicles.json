@@ -258,6 +258,50 @@
     "notes": "按官方车型页记录，量产交付状态需后续按小米交付公告更新。"
   },
   {
+    "id": "xpeng-g7-ultra-2026",
+    "brand": "小鹏",
+    "model": "G7 Ultra",
+    "modelYear": 2026,
+    "releaseDate": "2025-07-03",
+    "deliveryDate": null,
+    "chipIds": [
+      "xpeng-turing-ai"
+    ],
+    "chipCount": 3,
+    "totalCompute": {
+      "value": 2250,
+      "unit": "TOPS",
+      "precision": "unknown",
+      "sparse": null,
+      "officialSource": true,
+      "comparable": false,
+      "calculationMethod": "official_total",
+      "notes": "小鹏官方新闻披露G7 Ultra首发搭载3颗图灵AI芯片，整车有效算力2250 TOPS；该值为小鹏有效算力口径，未披露INT8/稀疏等精度。"
+    },
+    "drivingSystem": "XNGP / 第二代VLA",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": null,
+      "camera": null,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": null,
+      "notes": "本次重点核验芯片与算力，传感器数量待按配置表继续补齐。"
+    },
+    "capabilities": [
+      "城市NOA",
+      "高速NOA",
+      "本地端VLA",
+      "本地端VLM"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-xpeng-g7-launch"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "官方称G7 Ultra为图灵AI芯片首发车型。"
+  },
+  {
     "id": "xpeng-g9-2025",
     "brand": "小鹏",
     "model": "G9",
@@ -300,5 +344,135 @@
     ],
     "lastUpdated": "2026-07-17",
     "notes": "作为小鹏量产 Orin 平台代表车型。"
+  },
+  {
+    "id": "xpeng-g9-2026-ultra",
+    "brand": "小鹏",
+    "model": "G9 Ultra（2026款）",
+    "modelYear": 2026,
+    "releaseDate": "2026-01-08",
+    "deliveryDate": null,
+    "chipIds": [
+      "xpeng-turing-ai"
+    ],
+    "chipCount": 3,
+    "totalCompute": {
+      "value": null,
+      "unit": "unknown",
+      "precision": "unknown",
+      "sparse": null,
+      "officialSource": true,
+      "comparable": false,
+      "calculationMethod": "not_available",
+      "notes": "官方配置表披露Ultra选装包包含2颗辅助驾驶图灵AI芯片和1颗智能座舱图灵AI芯片；未在同一官方来源直接披露G9整车总有效算力，暂不将750 TOPS自动乘以3写成总算力。"
+    },
+    "drivingSystem": "XNGP / 第二代VLA",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": null,
+      "camera": null,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": null,
+      "notes": "本次重点核验图灵芯片上车和算力口径，传感器数量待按配置表继续补齐。"
+    },
+    "capabilities": [
+      "城市NOA",
+      "高速NOA",
+      "第二代VLA"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-xpeng-g9-2026-config"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "作为小鹏G9图灵芯片上车版本跟踪；与2025款G9 Orin版本分开建模，避免同名车型混淆。"
+  },
+  {
+    "id": "xpeng-mona-m03-ultra-se-2026",
+    "brand": "小鹏",
+    "model": "MONA M03 Ultra SE",
+    "modelYear": 2026,
+    "releaseDate": null,
+    "deliveryDate": null,
+    "chipIds": [
+      "xpeng-turing-ai"
+    ],
+    "chipCount": 2,
+    "totalCompute": {
+      "value": 1500,
+      "unit": "TOPS",
+      "precision": "unknown",
+      "sparse": null,
+      "officialSource": true,
+      "comparable": false,
+      "calculationMethod": "official_total",
+      "notes": "小鹏官方MONA M03配置表披露Ultra SE版本搭载2颗图灵AI芯片，整车有效算力1500 TOPS；Max版本1颗图灵AI芯片对应750 TOPS。"
+    },
+    "drivingSystem": "小鹏AI辅助驾驶 / 第二代VLA",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": 0,
+      "camera": 11,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": 12,
+      "notes": "配置表披露Ultra SE版本智能辅助驾驶高清摄像头7个、360高清环视摄像头4个、超声波雷达12个；毫米波雷达数量需继续核验。"
+    },
+    "capabilities": [
+      "高速NOA",
+      "城市NOA",
+      "第二代VLA"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-xpeng-mona-m03-2026-config"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "以Ultra SE作为MONA M03图灵双芯代表版本跟踪。"
+  },
+  {
+    "id": "xpeng-p7-2026",
+    "brand": "小鹏",
+    "model": "全新P7",
+    "modelYear": 2026,
+    "releaseDate": "2025-08-27",
+    "deliveryDate": null,
+    "chipIds": [
+      "xpeng-turing-ai"
+    ],
+    "chipCount": 3,
+    "totalCompute": {
+      "value": 2250,
+      "unit": "TOPS",
+      "precision": "unknown",
+      "sparse": null,
+      "officialSource": true,
+      "comparable": false,
+      "calculationMethod": "official_total",
+      "notes": "小鹏官方新闻披露全新P7全系Ultra，标配3颗自研图灵AI芯片，整车有效算力2250 TOPS；其中两颗驱动智驾VLA模型，另一颗协同座舱VLM模型。"
+    },
+    "drivingSystem": "XNGP / 第二代VLA",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": null,
+      "camera": null,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": null,
+      "notes": "本次重点核验芯片与算力，传感器数量待按配置表继续补齐。"
+    },
+    "capabilities": [
+      "城市NOA",
+      "高速NOA",
+      "本地端VLA",
+      "本地端VLM"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-xpeng-p7-launch"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "作为全新P7图灵三芯代表车型跟踪。"
   }
 ]

@@ -18,4 +18,30 @@ describe("data validation", () => {
     expect(yu7?.totalCompute.notes).toContain("装车");
     expect(yu7?.totalCompute.notes).toContain("1000 INT8 TOPS平台上限");
   });
+
+  it("tracks XPeng Turing single-chip effective compute and installed vehicle compute separately", async () => {
+    const chips = await readJson<Array<{ id: string; compute: { value: number | null; precision: string; notes: string } }>>(
+      "data/chips.json"
+    );
+    const vehicles = await readJson<Array<{ id: string; chipCount: number | null; totalCompute: { value: number | null } }>>(
+      "data/vehicles.json"
+    );
+    const turing = chips.find((chip) => chip.id === "xpeng-turing-ai");
+    const mona = vehicles.find((vehicle) => vehicle.id === "xpeng-mona-m03-ultra-se-2026");
+    const p7 = vehicles.find((vehicle) => vehicle.id === "xpeng-p7-2026");
+    const g7 = vehicles.find((vehicle) => vehicle.id === "xpeng-g7-ultra-2026");
+    const g9 = vehicles.find((vehicle) => vehicle.id === "xpeng-g9-2026-ultra");
+
+    expect(turing?.compute.value).toBe(750);
+    expect(turing?.compute.precision).toBe("unknown");
+    expect(turing?.compute.notes).toContain("有效算力");
+    expect(mona?.chipCount).toBe(2);
+    expect(mona?.totalCompute.value).toBe(1500);
+    expect(p7?.chipCount).toBe(3);
+    expect(p7?.totalCompute.value).toBe(2250);
+    expect(g7?.chipCount).toBe(3);
+    expect(g7?.totalCompute.value).toBe(2250);
+    expect(g9?.chipCount).toBe(3);
+    expect(g9?.totalCompute.value).toBeNull();
+  });
 });

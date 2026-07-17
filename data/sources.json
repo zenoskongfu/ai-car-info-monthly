@@ -264,6 +264,36 @@
     "notes": "官方车型页，披露 YU7 搭载 NVIDIA DRIVE AGX Thor 车载计算平台；装车算力以小米辅助驾驶页/配置表的700 TOPS为准。"
   },
   {
+    "id": "source-xpeng-g7-launch",
+    "title": "19.58万元起售，跨时代的AI汽车小鹏G7正式上市",
+    "publisher": "小鹏汽车",
+    "url": "https://www.xiaopeng.com/news/company_news/5481.html",
+    "publishedAt": "2025-07-03",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-g7-ultra-2026",
+      "xpeng-turing-ai"
+    ],
+    "notes": "官方新闻披露小鹏G7 Ultra首发搭载3颗图灵AI芯片，整车有效算力2250 TOPS。"
+  },
+  {
+    "id": "source-xpeng-g9-2026-config",
+    "title": "2026款G9参数配置表",
+    "publisher": "小鹏汽车",
+    "url": "https://www.xiaopeng.com/g9_2026/configuration.html",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-g9-2026-ultra",
+      "xpeng-turing-ai"
+    ],
+    "notes": "官方配置页披露2026款G9标配辅助驾驶图灵AI芯片1颗，Ultra SE/Ultra选装包包含辅助驾驶图灵AI芯片2颗，Ultra选装包另含智能座舱图灵AI芯片1颗。"
+  },
+  {
     "id": "source-xpeng-g9-config",
     "title": "2025款G9参数配置表",
     "publisher": "小鹏汽车",
@@ -279,6 +309,21 @@
     "notes": "官方配置页，列出 NVIDIA DRIVE Orin 超级计算平台 2 个、平台算力 508 TOPS。"
   },
   {
+    "id": "source-xpeng-mona-m03-2026-config",
+    "title": "小鹏MONA M03参数配置表",
+    "publisher": "小鹏汽车",
+    "url": "https://www.xiaopeng.com/m03_2026/configuration.html",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-mona-m03-ultra-se-2026",
+      "xpeng-turing-ai"
+    ],
+    "notes": "官方配置表披露MONA M03 Max版1颗图灵AI芯片对应750 TOPS，Ultra SE版2颗图灵AI芯片对应1500 TOPS。"
+  },
+  {
     "id": "source-xpeng-news-5355",
     "title": "小鹏10年热爱之夜：小鹏MONA M03发布，多项核心技术首次亮相",
     "publisher": "小鹏汽车",
@@ -291,6 +336,21 @@
       "xpeng-turing-ai"
     ],
     "notes": "官方新闻，披露图灵芯片流片、40核处理器、2个NPU、面向L4等信息。"
+  },
+  {
+    "id": "source-xpeng-p7-launch",
+    "title": "21.98万元起售！全新小鹏P7正式上市，AI豪华轿跑驶入智能驾驶新纪元",
+    "publisher": "小鹏汽车",
+    "url": "https://www.xiaopeng.com/news/company_news/5494.html",
+    "publishedAt": "2025-08-27",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-p7-2026",
+      "xpeng-turing-ai"
+    ],
+    "notes": "官方新闻披露全新小鹏P7全系Ultra，标配3颗自研图灵AI芯片，整车有效算力2250 TOPS。"
   },
   {
     "id": "source-xpeng-turing-page",
