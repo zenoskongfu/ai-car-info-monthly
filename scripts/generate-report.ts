@@ -67,6 +67,14 @@ type Platform = Entity & {
   name: string;
   vendor: string;
   status: string;
+  compute: {
+    value: number | null;
+    unit: string;
+    precision: string;
+    sparse: boolean | null;
+    scope: string;
+    notes: string;
+  };
   sourceIds: string[];
 };
 
@@ -83,6 +91,17 @@ function formatCompute(compute: { value: number | null; unit: string; precision:
   if (compute.value === null) return "官方未公开";
   const sparseText = compute.sparse === null ? "稀疏/稠密未说明" : compute.sparse ? "稀疏" : "稠密";
   return `${compute.value} ${compute.unit} / ${compute.precision} / ${sparseText}`;
+}
+
+function compactComputeNote(
+  compute: { value: number | null; unit: string; precision: string; sparse?: boolean | null; scope?: string; notes?: string },
+  fallback: string
+) {
+  const valueText = formatCompute(compute);
+  const scopeText = compute.scope ? `；口径：${compute.scope}` : "";
+  const noteText = compute.notes ? `；${compute.notes}` : "";
+  if (valueText === "官方未公开" && !noteText) return fallback;
+  return `${valueText}${scopeText}${noteText}`;
 }
 
 function formatStatus(status: string) {
@@ -113,21 +132,37 @@ function rowsForDiff(diff: MonthlyDiff, chips: Chip[], vehicles: Vehicle[], plat
 
   for (const id of diff.chips.added) {
     const item = chipMap.get(id);
-    if (item) rows.push(`| ${item.manufacturer} | 新增芯片 | ${item.name} | 首次纳入结构化跟踪 | ${formatStatus(item.status)} |`);
+    if (item) {
+      rows.push(
+        `| ${item.manufacturer} | 新增芯片 | ${item.name} | 首次纳入结构化跟踪 | ${compactComputeNote(item.compute, "官方未公开算力口径")} | ${formatStatus(item.status)} |`
+      );
+    }
   }
   for (const id of diff.vehicles.added) {
     const item = vehicleMap.get(id);
-    if (item) rows.push(`| ${item.brand} | 新增车型 | ${item.model} | 首次纳入结构化跟踪 | ${formatStatus(item.status)} |`);
+    if (item) {
+      rows.push(
+        `| ${item.brand} | 新增车型 | ${item.model} | 首次纳入结构化跟踪 | ${compactComputeNote(item.totalCompute, "官方未公开整车总算力口径")} | ${formatStatus(item.status)} |`
+      );
+    }
   }
   for (const id of diff.platforms.added) {
     const item = platformMap.get(id);
-    if (item) rows.push(`| ${item.vendor} | 新增平台 | ${item.name} | 首次纳入结构化跟踪 | ${formatStatus(item.status)} |`);
+    if (item) {
+      rows.push(
+        `| ${item.vendor} | 新增平台 | ${item.name} | 首次纳入结构化跟踪 | ${compactComputeNote(item.compute, "平台级不汇总算力")} | ${formatStatus(item.status)} |`
+      );
+    }
   }
   for (const id of diff.otaUpdates.added) {
     const item = otaMap.get(id);
-    if (item) rows.push(`| ${item.manufacturer} | 新增OTA | ${item.system} ${item.version} | 首次纳入结构化跟踪 | ${formatStatus(item.status)} |`);
+    if (item) {
+      rows.push(
+        `| ${item.manufacturer} | 新增OTA | ${item.system} ${item.version} | 首次纳入结构化跟踪 | 不涉及新增算力口径 | ${formatStatus(item.status)} |`
+      );
+    }
   }
-  return rows.length ? rows.join("\n") : "| - | - | - | 本月未发现经过可靠来源确认的重大芯片或车型平台变化。 | - |";
+  return rows.length ? rows.join("\n") : "| - | - | - | 本月未发现经过可靠来源确认的重大芯片或车型平台变化。 | - | - |";
 }
 
 function renderChip(chip: Chip, vehicles: Vehicle[], sourceMap: Map<string, Source>) {
@@ -214,8 +249,8 @@ ${summary}
 
 ## 二、本月关键变化
 
-| 车企或厂商 | 变化类型 | 芯片或车型 | 本月变化 | 当前状态 |
-|---|---|---|---|---|
+| 车企或厂商 | 变化类型 | 芯片或车型 | 本月变化 | 算力说明 | 当前状态 |
+|---|---|---|---|---|---|
 ${rowsForDiff(diff, chips, vehicles, platforms, otaUpdates)}
 
 ## 三、新增或更新的智驾芯片
@@ -261,12 +296,12 @@ ${["理想", "小米", "小鹏", "蔚来", "华为鸿蒙智行", "比亚迪"].ma
 
 ## 七、算力对比
 
-| 芯片 | 厂商 | 单芯片算力 | 精度 | 稀疏或稠密 | 搭载车型 | 状态 |
-|---|---|---:|---|---|---|---|
+| 芯片 | 厂商 | 单芯片算力 | 精度 | 稀疏或稠密 | 算力说明 | 搭载车型 | 状态 |
+|---|---|---:|---|---|---|---|---|
 ${chips
   .map((chip) => {
     const models = vehicles.filter((vehicle) => vehicle.chipIds.includes(chip.id)).map((vehicle) => `${vehicle.brand}${vehicle.model}`);
-    return `| ${chip.name} | ${chip.manufacturer} | ${chip.compute.value ?? "未公开"} ${chip.compute.unit === "unknown" ? "" : chip.compute.unit} | ${chip.compute.precision} | ${chip.compute.sparse === null ? "未说明" : chip.compute.sparse ? "稀疏" : "稠密"} | ${models.join("、") || "未确认"} | ${formatStatus(chip.status)} |`;
+    return `| ${chip.name} | ${chip.manufacturer} | ${chip.compute.value ?? "未公开"} ${chip.compute.unit === "unknown" ? "" : chip.compute.unit} | ${chip.compute.precision} | ${chip.compute.sparse === null ? "未说明" : chip.compute.sparse ? "稀疏" : "稠密"} | ${chip.compute.notes} | ${models.join("、") || "未确认"} | ${formatStatus(chip.status)} |`;
   })
   .join("\n")}
 
@@ -274,9 +309,9 @@ ${chips
 
 ## 八、重大OTA与模型升级
 
-| 车企 | 系统版本 | 车型 | 主要升级 | 推送状态 |
-|---|---|---|---|---|
-${otaUpdates.map((update) => `| ${update.manufacturer} | ${update.system} ${update.version} | ${update.vehicleIds.join("、")} | ${update.highlights.join("、")} | ${formatStatus(update.status)} |`).join("\n")}
+| 车企 | 系统版本 | 车型 | 主要升级 | 算力说明 | 推送状态 |
+|---|---|---|---|---|---|
+${otaUpdates.map((update) => `| ${update.manufacturer} | ${update.system} ${update.version} | ${update.vehicleIds.join("、")} | ${update.highlights.join("、")} | 不涉及新增算力口径 | ${formatStatus(update.status)} |`).join("\n")}
 
 ## 九、量产与交付进度
 
