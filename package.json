@@ -1,0 +1,26 @@
+{
+  "name": "autonomous-driving-report",
+  "version": "0.1.0",
+  "private": true,
+  "description": "国内智驾芯片与车型月报自动化项目",
+  "type": "module",
+  "scripts": {
+    "collect": "tsx scripts/collect-sources.ts",
+    "normalize": "tsx scripts/normalize-data.ts",
+    "diff": "tsx scripts/compare-monthly.ts",
+    "generate": "tsx scripts/compare-monthly.ts && tsx scripts/generate-report.ts && tsx scripts/update-index.ts",
+    "validate": "tsx scripts/validate-data.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.34",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

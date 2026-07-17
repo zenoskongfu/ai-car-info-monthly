@@ -1,0 +1,302 @@
+[
+  {
+    "id": "aito-m9-2026",
+    "brand": "问界",
+    "model": "M9",
+    "modelYear": 2026,
+    "releaseDate": null,
+    "deliveryDate": null,
+    "chipIds": [],
+    "chipCount": null,
+    "totalCompute": {
+      "value": null,
+      "unit": "unknown",
+      "precision": "unknown",
+      "sparse": null,
+      "officialSource": false,
+      "comparable": false,
+      "calculationMethod": "not_available",
+      "notes": "官方车型页披露 HUAWEI ADS 辅助驾驶系统，但未公开本车型芯片与算力参数。"
+    },
+    "drivingSystem": "HUAWEI ADS / 华为乾崑智驾",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": null,
+      "camera": null,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": null,
+      "notes": "本次不从非官方配置汇总页填入数量。"
+    },
+    "capabilities": [
+      "城市NOA",
+      "高速NOA",
+      "泊车辅助"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-hima-m9",
+      "source-huawei-qian-kun"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "作为华为鸿蒙智行/乾崑智驾代表车型；芯片平台待进一步官方来源核验。"
+  },
+  {
+    "id": "byd-han-2025",
+    "brand": "比亚迪",
+    "model": "汉 智驾版",
+    "modelYear": 2025,
+    "releaseDate": "2025-02-10",
+    "deliveryDate": null,
+    "chipIds": [],
+    "chipCount": null,
+    "totalCompute": {
+      "value": null,
+      "unit": "unknown",
+      "precision": "unknown",
+      "sparse": null,
+      "officialSource": false,
+      "comparable": false,
+      "calculationMethod": "not_available",
+      "notes": "比亚迪官方新闻确认天神之眼体系与车型覆盖，具体芯片版本需按配置表继续核验。"
+    },
+    "drivingSystem": "天神之眼",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": null,
+      "camera": null,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": null,
+      "notes": "不同天神之眼版本传感器差异较大，暂不混填。"
+    },
+    "capabilities": [
+      "高速NOA",
+      "城市NOA"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-byd-gods-eye"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "作为比亚迪代表车型占位，后续需补充车型配置级官方来源。"
+  },
+  {
+    "id": "li-auto-l9-livis-2026",
+    "brand": "理想",
+    "model": "L9 Livis",
+    "modelYear": 2026,
+    "releaseDate": "2026-06-15",
+    "deliveryDate": null,
+    "chipIds": [
+      "li-auto-m100"
+    ],
+    "chipCount": 2,
+    "totalCompute": {
+      "value": 2560,
+      "unit": "TOPS",
+      "precision": "unknown",
+      "sparse": null,
+      "officialSource": true,
+      "comparable": false,
+      "calculationMethod": "source_reported",
+      "notes": "公开报道与官方技术页指向双 M100；单芯片精度未披露，因此整车总算力也不可直接比较。"
+    },
+    "drivingSystem": "AD5.0 / Livis",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": null,
+      "camera": null,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": null,
+      "notes": "本次未在官方技术页中核验到完整传感器数量。"
+    },
+    "capabilities": [
+      "城市NOA",
+      "高速NOA",
+      "端到端辅助驾驶",
+      "VLA模型"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-li-auto-autodrive"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "L9 Livis 作为理想自研芯片代表车型跟踪；交付日期需继续核验官方交付公告。"
+  },
+  {
+    "id": "nio-et9-2025",
+    "brand": "蔚来",
+    "model": "ET9",
+    "modelYear": 2025,
+    "releaseDate": "2023-12-23",
+    "deliveryDate": "2025-04-23",
+    "chipIds": [
+      "nio-shenji-nx9031"
+    ],
+    "chipCount": 1,
+    "totalCompute": {
+      "value": null,
+      "unit": "unknown",
+      "precision": "unknown",
+      "sparse": null,
+      "officialSource": true,
+      "comparable": false,
+      "calculationMethod": "not_available",
+      "notes": "官方未公开可直接比较的 TOPS 口径。"
+    },
+    "drivingSystem": "NAD / 蔚来智能驾驶",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": null,
+      "camera": null,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": null,
+      "notes": "本次未核验完整传感器数量。"
+    },
+    "capabilities": [
+      "城市NOA",
+      "高速NOA",
+      "端到端辅助驾驶"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-nio-smart-chip",
+      "source-nio-et9"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "官方技术文章称神玑 NX9031 随 ET9 开启交付正式量产上车。"
+  },
+  {
+    "id": "xiaomi-su7-2024",
+    "brand": "小米",
+    "model": "SU7",
+    "modelYear": 2024,
+    "releaseDate": "2024-03-28",
+    "deliveryDate": "2024-04-03",
+    "chipIds": [
+      "nvidia-orin-x"
+    ],
+    "chipCount": 2,
+    "totalCompute": {
+      "value": null,
+      "unit": "unknown",
+      "precision": "unknown",
+      "sparse": null,
+      "officialSource": false,
+      "comparable": false,
+      "calculationMethod": "not_available",
+      "notes": "NVIDIA 官方披露 SU7 使用双 DRIVE Orin 配置，但本次未在小米官方车型页中核验到总算力口径。"
+    },
+    "drivingSystem": "Xiaomi HAD / Xiaomi Pilot",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": null,
+      "camera": null,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": null,
+      "notes": "不同版本差异较大，本次仅记录车型级代表信息。"
+    },
+    "capabilities": [
+      "高速NOA",
+      "城市NOA"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-xiaomi-su7",
+      "source-nvidia-xiaomi-suet"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "芯片配置来自 NVIDIA 官方新闻稿；小米官方车型页作为车型存在与产品信息来源。"
+  },
+  {
+    "id": "xiaomi-yu7-2026",
+    "brand": "小米",
+    "model": "YU7",
+    "modelYear": 2026,
+    "releaseDate": "2026-06-26",
+    "deliveryDate": null,
+    "chipIds": [
+      "nvidia-thor"
+    ],
+    "chipCount": 1,
+    "totalCompute": {
+      "value": 1000,
+      "unit": "TOPS",
+      "precision": "INT8",
+      "sparse": null,
+      "officialSource": true,
+      "comparable": false,
+      "calculationMethod": "source_reported",
+      "notes": "车型页披露搭载 NVIDIA DRIVE AGX Thor；平台页披露 Thor 最高 1000 INT8 TOPS / 2000 FP4 FLOPs，不能与 FP4 或未知精度混排。"
+    },
+    "drivingSystem": "小米HAD辅助驾驶",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": 1,
+      "camera": 7,
+      "millimeterWaveRadar": null,
+      "fourDRadar": 1,
+      "ultrasonicRadar": null,
+      "notes": "官方页披露全系标配激光雷达、4D毫米波雷达、高清摄像头、超声波雷达、7颗超透防眩摄像头；完整数量需继续核验配置表。"
+    },
+    "capabilities": [
+      "城市NOA",
+      "高速NOA"
+    ],
+    "status": "announced",
+    "sourceIds": [
+      "source-xiaomi-yu7",
+      "source-nvidia-drive-agx"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "按官方车型页记录，量产交付状态需后续按小米交付公告更新。"
+  },
+  {
+    "id": "xpeng-g9-2025",
+    "brand": "小鹏",
+    "model": "G9",
+    "modelYear": 2025,
+    "releaseDate": "2024-09-01",
+    "deliveryDate": null,
+    "chipIds": [
+      "nvidia-orin-x"
+    ],
+    "chipCount": 2,
+    "totalCompute": {
+      "value": 508,
+      "unit": "TOPS",
+      "precision": "INT8",
+      "sparse": null,
+      "officialSource": true,
+      "comparable": false,
+      "calculationMethod": "official_total",
+      "notes": "小鹏官方配置页披露平台算力 508 TOPS；Orin 单芯片稀疏/稠密口径未完整标注，谨慎不参与排名。"
+    },
+    "drivingSystem": "XNGP",
+    "automationLevel": "L2++",
+    "sensors": {
+      "lidar": null,
+      "camera": null,
+      "millimeterWaveRadar": null,
+      "fourDRadar": null,
+      "ultrasonicRadar": null,
+      "notes": "本次以官方配置页核验芯片与算力；传感器数量待按具体版本补齐。"
+    },
+    "capabilities": [
+      "城市NOA",
+      "高速NOA",
+      "记忆泊车"
+    ],
+    "status": "mass_production",
+    "sourceIds": [
+      "source-xpeng-g9-config",
+      "source-nvidia-xpeng-g9"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "作为小鹏量产 Orin 平台代表车型。"
+  }
+]

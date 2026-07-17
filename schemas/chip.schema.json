@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "chip.schema.json",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "name",
+      "manufacturer",
+      "status",
+      "processNode",
+      "compute",
+      "memoryBandwidth",
+      "powerConsumption",
+      "architecture",
+      "releaseDate",
+      "massProductionDate",
+      "supportedModels",
+      "sourceIds",
+      "lastUpdated",
+      "notes"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "name": { "type": "string", "minLength": 1 },
+      "manufacturer": { "type": "string", "minLength": 1 },
+      "status": {
+        "type": "string",
+        "enum": ["rumored", "announced", "pre_production", "mass_production", "discontinued"]
+      },
+      "processNode": { "type": ["string", "null"] },
+      "compute": {
+        "type": "object",
+        "required": ["value", "unit", "precision", "sparse", "scope", "officialSource", "comparable", "notes"],
+        "additionalProperties": false,
+        "properties": {
+          "value": { "type": ["number", "null"] },
+          "unit": { "type": "string", "enum": ["TOPS", "TFLOPS", "unknown"] },
+          "precision": { "type": "string", "enum": ["INT8", "INT4", "FP8", "FP4", "FP16", "unknown"] },
+          "sparse": { "type": ["boolean", "null"] },
+          "scope": { "type": "string", "enum": ["single_chip", "platform", "vehicle_total", "unknown"] },
+          "officialSource": { "type": "boolean" },
+          "comparable": { "type": "boolean" },
+          "notes": { "type": "string" }
+        }
+      },
+      "memoryBandwidth": { "type": ["string", "null"] },
+      "powerConsumption": { "type": ["string", "null"] },
+      "architecture": { "type": ["string", "null"] },
+      "releaseDate": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+      "massProductionDate": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+      "supportedModels": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+      "sourceIds": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+      "lastUpdated": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+      "notes": { "type": "string" }
+    }
+  }
+}

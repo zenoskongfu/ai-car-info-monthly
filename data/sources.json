@@ -1,0 +1,279 @@
+[
+  {
+    "id": "source-black-sesame-a1000-media",
+    "title": "支持L3级自动驾驶，黑芝麻华山二号A1000芯片正式发布",
+    "publisher": "中国日报网",
+    "url": "https://cn.chinadaily.com.cn/a/202006/16/WS5ee8908aa31027ab2a8d0791.html",
+    "publishedAt": "2020-06-16",
+    "accessedAt": "2026-07-17",
+    "sourceType": "media",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "black-sesame-a1000"
+    ],
+    "notes": "高可信媒体转载/报道，包含 A1000 40-70 TOPS、16nm、功耗等信息；后续需补充稳定官方产品页。"
+  },
+  {
+    "id": "source-byd-gods-eye",
+    "title": "比亚迪天神之眼开创全民智驾时代",
+    "publisher": "比亚迪",
+    "url": "https://www.byd.com/cn/news/2025/detail563",
+    "publishedAt": "2025-02-10",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "byd-gods-eye",
+      "byd-han-2025"
+    ],
+    "notes": "比亚迪官方新闻，作为天神之眼系统与代表车型的来源；具体芯片配置需按车型配置继续核验。"
+  },
+  {
+    "id": "source-hima-m9",
+    "title": "问界M9",
+    "publisher": "鸿蒙智行",
+    "url": "https://hima.auto/wenjie/m9-new/",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "aito-m9-2026",
+      "huawei-ads"
+    ],
+    "notes": "官方车型页，披露问界 M9 搭载 HUAWEI ADS 辅助驾驶系统；芯片平台未在页面中明确列出。"
+  },
+  {
+    "id": "source-horizon-journey6",
+    "title": "征程6系列",
+    "publisher": "地平线 Horizon Robotics",
+    "url": "https://www.horizon.auto/solutions/horizon-journey/horizon-journey6",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "horizon-journey6p"
+    ],
+    "notes": "官方产品页，披露征程6系列算力覆盖 10 TOPS 至 560 TOPS。"
+  },
+  {
+    "id": "source-huawei-mdc-article",
+    "title": "MDC：使能自动驾驶的汽车大脑",
+    "publisher": "华为",
+    "url": "https://www.huawei.com/cn/huaweitech/publication/81/self-driving-ai-brain",
+    "publishedAt": "2020-07-01",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "huawei-mdc",
+      "huawei-mdc610"
+    ],
+    "notes": "华为官方技术文章，披露 MDC 最高 352 TOPS 等平台信息。"
+  },
+  {
+    "id": "source-huawei-mdc610",
+    "title": "安全优先：华为MDC 610设计通过ASIL D级功能安全评估",
+    "publisher": "华为",
+    "url": "https://www.huawei.com/cn/news/2020/12/huawei-passes-asild-certification-mdc-610-design",
+    "publishedAt": "2020-12-11",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "huawei-mdc610"
+    ],
+    "notes": "华为官方新闻，披露 MDC 610 算力 160 TOPS 与 ASIL D 设计审核。"
+  },
+  {
+    "id": "source-huawei-qian-kun",
+    "title": "华为乾崑智能汽车解决方案",
+    "publisher": "华为乾崑",
+    "url": "https://auto.huawei.com/cn/",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "huawei-ads",
+      "aito-m9-2026"
+    ],
+    "notes": "官方方案页，披露华为乾崑智驾 ADS 4 等辅助驾驶系统信息。"
+  },
+  {
+    "id": "source-li-auto-autodrive",
+    "title": "理想高级辅助驾驶",
+    "publisher": "理想汽车",
+    "url": "https://www.lixiang.com/tech/autodrive",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "li-auto-m100",
+      "li-auto-l9-livis-2026"
+    ],
+    "notes": "官方产品技术页；页面未公开独立发布日期，publishedAt 取本次访问快照日期。"
+  },
+  {
+    "id": "source-nio-et9",
+    "title": "蔚来ET9 智能电动行政旗舰轿车",
+    "publisher": "蔚来",
+    "url": "https://www.nio.cn/et9",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "nio-et9-2025"
+    ],
+    "notes": "官方车型页；页面未公开独立发布日期，publishedAt 取本次访问快照日期。"
+  },
+  {
+    "id": "source-nio-smart-chip",
+    "title": "蔚来自研芯片「神玑」和「杨戬」，为智能出行装上“中国芯”",
+    "publisher": "蔚来",
+    "url": "https://www.nio.cn/smart-technology/20250710011",
+    "publishedAt": "2025-07-10",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "nio-shenji-nx9031",
+      "nio-et9-2025"
+    ],
+    "notes": "官方技术文章，披露神玑 NX9031 量产上车、5nm、32核CPU等信息。"
+  },
+  {
+    "id": "source-nvidia-drive-agx",
+    "title": "DRIVE AGX Autonomous Vehicle Development Platform",
+    "publisher": "NVIDIA Developer",
+    "url": "https://developer.nvidia.com/drive/agx",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "nvidia-thor",
+      "nvidia-orin-x"
+    ],
+    "notes": "NVIDIA 官方开发者页面，列出 Thor 与 Orin 平台规格。"
+  },
+  {
+    "id": "source-nvidia-orin-pdf",
+    "title": "NVIDIA DRIVE AGX Orin Platform for Developers",
+    "publisher": "NVIDIA Developer",
+    "url": "https://developer.nvidia.com/downloads/drive/docs/nvidia-drive-agx-orin-platform-for-developers.pdf",
+    "publishedAt": "2025-10-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "nvidia-orin-x"
+    ],
+    "notes": "官方 PDF，披露 Orin-X 254 INT8 TOPS 与最高 200 GB/s 内存带宽。"
+  },
+  {
+    "id": "source-nvidia-xiaomi-suet",
+    "title": "Wave of EV Makers Choose NVIDIA DRIVE for Automated Driving",
+    "publisher": "NVIDIA Newsroom",
+    "url": "https://nvidianews.nvidia.com/news/wave-of-ev-makers-choose-nvidia-drive-for-automated-driving",
+    "publishedAt": "2024-01-08",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xiaomi-su7-2024",
+      "nvidia-orin-x"
+    ],
+    "notes": "NVIDIA 官方新闻稿，披露 Xiaomi SU7 使用双 DRIVE Orin 配置。"
+  },
+  {
+    "id": "source-nvidia-xpeng-g9",
+    "title": "NVIDIA DRIVE Orin助力超快充全智能SUV小鹏G9正式上市",
+    "publisher": "NVIDIA 中国",
+    "url": "https://blogs.nvidia.cn/blog/xpeng-g9-drive-orin-launch/",
+    "publishedAt": "2022-09-21",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-g9-2025",
+      "nvidia-orin-x"
+    ],
+    "notes": "NVIDIA 官方博客，披露 G9 双 Orin、508 TOPS、交付时间等。"
+  },
+  {
+    "id": "source-xiaomi-su7",
+    "title": "新一代SU7",
+    "publisher": "小米汽车",
+    "url": "https://www.xiaomiev.com/su7",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xiaomi-su7-2024"
+    ],
+    "notes": "官方车型页；芯片搭载信息以 NVIDIA 官方新闻稿交叉验证。"
+  },
+  {
+    "id": "source-xiaomi-yu7",
+    "title": "YU7",
+    "publisher": "小米汽车",
+    "url": "https://www.xiaomiev.com/yu7",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xiaomi-yu7-2026",
+      "nvidia-thor"
+    ],
+    "notes": "官方车型页，披露 YU7 搭载 NVIDIA DRIVE AGX Thor 车载计算平台。"
+  },
+  {
+    "id": "source-xpeng-g9-config",
+    "title": "2025款G9参数配置表",
+    "publisher": "小鹏汽车",
+    "url": "https://www.xiaopeng.com/g92025/configuration.html",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-g9-2025",
+      "nvidia-orin-x"
+    ],
+    "notes": "官方配置页，列出 NVIDIA DRIVE Orin 超级计算平台 2 个、平台算力 508 TOPS。"
+  },
+  {
+    "id": "source-xpeng-news-5355",
+    "title": "小鹏10年热爱之夜：小鹏MONA M03发布，多项核心技术首次亮相",
+    "publisher": "小鹏汽车",
+    "url": "https://www.xiaopeng.com/news/company_news/5355.html",
+    "publishedAt": "2024-08-27",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-turing-ai"
+    ],
+    "notes": "官方新闻，披露图灵芯片流片、40核处理器、2个NPU、面向L4等信息。"
+  },
+  {
+    "id": "source-xpeng-turing-page",
+    "title": "小鹏图灵AI芯片",
+    "publisher": "小鹏汽车",
+    "url": "https://www.xiaopeng.com/turingaichip.html",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-turing-ai"
+    ],
+    "notes": "官方产品页；页面未公开独立发布日期，publishedAt 取本次访问快照日期。"
+  }
+]

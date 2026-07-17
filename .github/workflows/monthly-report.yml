@@ -1,0 +1,87 @@
+name: Monthly report
+
+on:
+  schedule:
+    # Beijing time 08:00 on the first day of each month is 00:00 UTC.
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+    inputs:
+      report_month:
+        description: "Report month in YYYY-MM format. Defaults to current Asia/Shanghai month."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  monthly-report:
+    runs-on: ubuntu-latest
+    env:
+      SEARCH_API_KEY: ${{ secrets.SEARCH_API_KEY }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      REPORT_MONTH: ${{ inputs.report_month }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Resolve report month
+        run: |
+          if [ -z "$REPORT_MONTH" ]; then
+            REPORT_MONTH=$(TZ=Asia/Shanghai date +%Y-%m)
+          fi
+          echo "REPORT_MONTH=$REPORT_MONTH" >> "$GITHUB_ENV"
+          echo "BRANCH_NAME=report/$REPORT_MONTH" >> "$GITHUB_ENV"
+          echo "COMMIT_MESSAGE=docs: update autonomous driving report for $REPORT_MONTH" >> "$GITHUB_ENV"
+          YEAR=${REPORT_MONTH%-*}
+          MONTH=${REPORT_MONTH#*-}
+          echo "PR_TITLE=智驾芯片与车型月报：${YEAR} 年 ${MONTH} 月" >> "$GITHUB_ENV"
+
+      - name: Collect source checkpoint
+        run: npm run collect
+
+      - name: Validate existing data
+        run: npm run validate
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Generate report
+        run: npm run generate
+
+      - name: Run tests
+        run: npm test
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.BRANCH_NAME }}
+          commit-message: ${{ env.COMMIT_MESSAGE }}
+          title: ${{ env.PR_TITLE }}
+          body: |
+            ## 本月新增内容
+
+            请查看 `docs/monthly/` 与 `data/monthly-diffs/`。
+
+            ## 校验结果
+
+            - `npm run validate`
+            - `npm test`
+            - `npm run generate`
+
+            ## 当前仍不确定的信息
+
+            详见月报“传闻和待确认信息”章节。

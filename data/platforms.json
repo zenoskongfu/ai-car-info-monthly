@@ -1,0 +1,148 @@
+[
+  {
+    "id": "byd-gods-eye",
+    "name": "天神之眼",
+    "vendor": "比亚迪",
+    "platformType": "driving_system",
+    "chipIds": [],
+    "compute": {
+      "value": null,
+      "unit": "unknown",
+      "precision": "unknown",
+      "sparse": null,
+      "scope": "unknown",
+      "notes": "不同版本与车型芯片平台不同，需按车型配置单独核验。"
+    },
+    "targetLevel": "L2++",
+    "status": "mass_production",
+    "sourceIds": [
+      "source-byd-gods-eye"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "作为比亚迪智驾系统主索引。"
+  },
+  {
+    "id": "horizon-journey6",
+    "name": "征程6系列",
+    "vendor": "地平线",
+    "platformType": "chip_family",
+    "chipIds": [
+      "horizon-journey6p"
+    ],
+    "compute": {
+      "value": 560,
+      "unit": "TOPS",
+      "precision": "unknown",
+      "sparse": null,
+      "scope": "single_chip",
+      "notes": "系列覆盖 10-560 TOPS，记录上限；精度未公开。"
+    },
+    "targetLevel": "低阶到全场景辅助驾驶",
+    "status": "mass_production",
+    "sourceIds": [
+      "source-horizon-journey6"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "按官方系列页记录。"
+  },
+  {
+    "id": "huawei-ads",
+    "name": "华为乾崑智驾 ADS",
+    "vendor": "华为",
+    "platformType": "driving_system",
+    "chipIds": [
+      "huawei-mdc610"
+    ],
+    "compute": {
+      "value": null,
+      "unit": "unknown",
+      "precision": "unknown",
+      "sparse": null,
+      "scope": "platform",
+      "notes": "ADS 系统跨车型配置差异较大，平台级不汇总算力。"
+    },
+    "targetLevel": "L2++",
+    "status": "mass_production",
+    "sourceIds": [
+      "source-huawei-qian-kun",
+      "source-huawei-mdc-article"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "官方明确 ADS 为辅助驾驶系统，不能替代驾驶员。"
+  },
+  {
+    "id": "li-auto-ad5",
+    "name": "理想 AD5.0 / Livis",
+    "vendor": "理想汽车",
+    "platformType": "driving_system",
+    "chipIds": [
+      "li-auto-m100"
+    ],
+    "compute": {
+      "value": 1280,
+      "unit": "TOPS",
+      "precision": "unknown",
+      "sparse": null,
+      "scope": "single_chip",
+      "notes": "平台搭载 M100；算力精度未公开。"
+    },
+    "targetLevel": "L2++",
+    "status": "mass_production",
+    "sourceIds": [
+      "source-li-auto-autodrive"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "仅跟踪公开披露的辅助驾驶能力，不标记为自动驾驶。"
+  },
+  {
+    "id": "nvidia-drive-agx",
+    "name": "NVIDIA DRIVE AGX",
+    "vendor": "NVIDIA",
+    "platformType": "compute_platform",
+    "chipIds": [
+      "nvidia-orin-x",
+      "nvidia-thor"
+    ],
+    "compute": {
+      "value": null,
+      "unit": "unknown",
+      "precision": "unknown",
+      "sparse": null,
+      "scope": "platform",
+      "notes": "DRIVE AGX 覆盖 Orin 与 Thor 等不同平台，不能用单一数值代表。"
+    },
+    "targetLevel": "L2+ to L5",
+    "status": "mass_production",
+    "sourceIds": [
+      "source-nvidia-drive-agx"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "用于记录 Orin/Thor 作为计算平台系列。"
+  },
+  {
+    "id": "xpeng-xngp",
+    "name": "XNGP",
+    "vendor": "小鹏汽车",
+    "platformType": "driving_system",
+    "chipIds": [
+      "nvidia-orin-x",
+      "xpeng-turing-ai"
+    ],
+    "compute": {
+      "value": null,
+      "unit": "unknown",
+      "precision": "unknown",
+      "sparse": null,
+      "scope": "unknown",
+      "notes": "不同车型/世代芯片平台不同，平台级不汇总算力。"
+    },
+    "targetLevel": "L2++",
+    "status": "mass_production",
+    "sourceIds": [
+      "source-xpeng-g9-config",
+      "source-xpeng-turing-page"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "图灵芯片尚未确认量产上车，平台记录同时保留现量产 Orin 与预研图灵。"
+  }
+]

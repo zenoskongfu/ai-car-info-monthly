@@ -1,0 +1,12 @@
+[
+  { "id": "li-auto", "name": "理想汽车", "category": "automaker", "country": "China", "priority": true },
+  { "id": "xiaomi-ev", "name": "小米汽车", "category": "automaker", "country": "China", "priority": true },
+  { "id": "xpeng", "name": "小鹏汽车", "category": "automaker", "country": "China", "priority": true },
+  { "id": "nio", "name": "蔚来", "category": "automaker", "country": "China", "priority": true },
+  { "id": "hima", "name": "华为鸿蒙智行", "category": "automaker_ecosystem", "country": "China", "priority": true },
+  { "id": "byd", "name": "比亚迪", "category": "automaker", "country": "China", "priority": true },
+  { "id": "nvidia", "name": "NVIDIA", "category": "chip_vendor", "country": "United States", "priority": true },
+  { "id": "horizon", "name": "地平线", "category": "chip_vendor", "country": "China", "priority": true },
+  { "id": "black-sesame", "name": "黑芝麻智能", "category": "chip_vendor", "country": "China", "priority": true },
+  { "id": "huawei", "name": "华为", "category": "platform_vendor", "country": "China", "priority": true }
+]

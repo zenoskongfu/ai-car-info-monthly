@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ota-li-auto-livis-2026-roadmap",
+    "manufacturer": "理想汽车",
+    "system": "Livis / AD5.0",
+    "version": "2026 roadmap",
+    "vehicleIds": [
+      "li-auto-l9-livis-2026"
+    ],
+    "releasedAt": null,
+    "status": "announced",
+    "highlights": [
+      "智驾效率提升",
+      "倒车能力升级",
+      "安全和效率持续优化"
+    ],
+    "sourceIds": [
+      "source-li-auto-autodrive"
+    ],
+    "lastUpdated": "2026-07-17",
+    "notes": "仅作为路线图跟踪，具体 OTA 版本号待官方推送公告确认。"
+  }
+]

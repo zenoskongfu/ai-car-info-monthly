@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "vehicle.schema.json",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "brand",
+      "model",
+      "modelYear",
+      "releaseDate",
+      "deliveryDate",
+      "chipIds",
+      "chipCount",
+      "totalCompute",
+      "drivingSystem",
+      "automationLevel",
+      "sensors",
+      "capabilities",
+      "status",
+      "sourceIds",
+      "lastUpdated",
+      "notes"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "brand": { "type": "string", "minLength": 1 },
+      "model": { "type": "string", "minLength": 1 },
+      "modelYear": { "type": "integer", "minimum": 2000 },
+      "releaseDate": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+      "deliveryDate": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+      "chipIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+      "chipCount": { "type": ["integer", "null"], "minimum": 0 },
+      "totalCompute": {
+        "type": "object",
+        "required": ["value", "unit", "precision", "sparse", "officialSource", "comparable", "calculationMethod", "notes"],
+        "additionalProperties": false,
+        "properties": {
+          "value": { "type": ["number", "null"] },
+          "unit": { "type": "string", "enum": ["TOPS", "TFLOPS", "unknown"] },
+          "precision": { "type": "string", "enum": ["INT8", "INT4", "FP8", "FP4", "FP16", "unknown"] },
+          "sparse": { "type": ["boolean", "null"] },
+          "officialSource": { "type": "boolean" },
+          "comparable": { "type": "boolean" },
+          "calculationMethod": { "type": "string", "enum": ["official_total", "source_reported", "not_available"] },
+          "notes": { "type": "string" }
+        }
+      },
+      "drivingSystem": { "type": ["string", "null"] },
+      "automationLevel": { "type": ["string", "null"] },
+      "sensors": {
+        "type": "object",
+        "required": ["lidar", "camera", "millimeterWaveRadar", "fourDRadar", "ultrasonicRadar", "notes"],
+        "additionalProperties": false,
+        "properties": {
+          "lidar": { "type": ["integer", "null"], "minimum": 0 },
+          "camera": { "type": ["integer", "null"], "minimum": 0 },
+          "millimeterWaveRadar": { "type": ["integer", "null"], "minimum": 0 },
+          "fourDRadar": { "type": ["integer", "null"], "minimum": 0 },
+          "ultrasonicRadar": { "type": ["integer", "null"], "minimum": 0 },
+          "notes": { "type": "string" }
+        }
+      },
+      "capabilities": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+      "status": {
+        "type": "string",
+        "enum": ["rumored", "announced", "pre_production", "mass_production", "discontinued"]
+      },
+      "sourceIds": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+      "lastUpdated": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+      "notes": { "type": "string" }
+    }
+  }
+}
