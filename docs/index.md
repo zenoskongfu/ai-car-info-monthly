@@ -13,7 +13,7 @@
 ## 数据概览
 
 - 芯片与计算平台实体：8（mass_production: 7；announced: 1）
-- 车型实体：11（mass_production: 10；announced: 1）
+- 车型实体：10（mass_production: 10）
 
 ## 维护原则
 

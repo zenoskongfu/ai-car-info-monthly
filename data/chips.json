@@ -187,7 +187,7 @@
       "source-nvidia-orin-pdf"
     ],
     "lastUpdated": "2026-07-17",
-    "notes": "量产日期为行业公开量产年份级信息，后续需按 NVIDIA 车规量产公告补精确日期。"
+    "notes": "作为已量产芯片实体保留；当前月报车型默认使用各车型最新款资料，旧款SU7/G9的Orin装车资料不再作为当前车型来源。"
   },
   {
     "id": "nvidia-thor",
@@ -218,10 +218,10 @@
     ],
     "sourceIds": [
       "source-nvidia-drive-agx",
-      "source-xiaomi-yu7"
+      "source-xiaomi-pilot"
     ],
     "lastUpdated": "2026-07-17",
-    "notes": "NVIDIA官方页披露Thor SoC平台最高规格；小米YU7实际装车辅助驾驶算力为700 TOPS，不能用本条1000 INT8 TOPS替代车型口径。"
+    "notes": "NVIDIA官方页披露Thor SoC平台最高规格；小米新一代SU7/YU7实际装车辅助驾驶算力为700 TOPS，不能用本条1000 INT8 TOPS替代车型口径。"
   },
   {
     "id": "xpeng-turing-ai",
@@ -237,7 +237,7 @@
       "scope": "single_chip",
       "officialSource": true,
       "comparable": false,
-      "notes": "小鹏官方车型配置表披露1颗图灵AI芯片对应整车有效算力750 TOPS，3颗图灵AI芯片对应2250 TOPS；该值为小鹏“有效算力”口径，未披露INT8/稀疏等可横向比较精度。"
+      "notes": "小鹏当前车型页/配置表披露1颗图灵AI芯片对应750 TOPS有效算力，2颗对应1500 TOPS，3颗对应2250 TOPS；该值为小鹏“有效算力”口径，未披露INT8/稀疏等可横向比较精度。"
     },
     "memoryBandwidth": null,
     "powerConsumption": null,
@@ -251,12 +251,12 @@
     ],
     "sourceIds": [
       "source-xpeng-turing-page",
-      "source-xpeng-news-5355",
       "source-xpeng-mona-m03-2026-config",
-      "source-xpeng-g7-launch",
-      "source-xpeng-p7-launch"
+      "source-xpeng-g7-2026",
+      "source-xpeng-g9-2026",
+      "source-xpeng-p7-2026-config"
     ],
     "lastUpdated": "2026-07-17",
-    "notes": "官方新闻披露2024-08-23流片成功；G7、全新P7、MONA M03等车型已公开搭载。"
+    "notes": "以当前在售/当前款车型页和配置表确认：G7、G9、MONA M03、P7等车型已公开搭载。"
   }
 ]

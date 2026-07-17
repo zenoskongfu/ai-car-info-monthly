@@ -173,7 +173,7 @@
       "nvidia-thor",
       "nvidia-orin-x"
     ],
-    "notes": "NVIDIA 官方开发者页面，列出 Thor 与 Orin 平台规格。"
+    "notes": "NVIDIA 官方开发者页面，列出 Thor 与 Orin 平台规格；仅用于芯片平台上限，不作为车型装车算力来源。"
   },
   {
     "id": "source-nvidia-orin-pdf",
@@ -190,36 +190,6 @@
     "notes": "官方 PDF，披露 Orin-X 254 INT8 TOPS 与最高 200 GB/s 内存带宽。"
   },
   {
-    "id": "source-nvidia-xiaomi-suet",
-    "title": "Wave of EV Makers Choose NVIDIA DRIVE for Automated Driving",
-    "publisher": "NVIDIA Newsroom",
-    "url": "https://nvidianews.nvidia.com/news/wave-of-ev-makers-choose-nvidia-drive-for-automated-driving",
-    "publishedAt": "2024-01-08",
-    "accessedAt": "2026-07-17",
-    "sourceType": "official",
-    "reliability": "high",
-    "relatedEntityIds": [
-      "xiaomi-su7-2024",
-      "nvidia-orin-x"
-    ],
-    "notes": "NVIDIA 官方新闻稿，披露 Xiaomi SU7 使用双 DRIVE Orin 配置。"
-  },
-  {
-    "id": "source-nvidia-xpeng-g9",
-    "title": "NVIDIA DRIVE Orin助力超快充全智能SUV小鹏G9正式上市",
-    "publisher": "NVIDIA 中国",
-    "url": "https://blogs.nvidia.cn/blog/xpeng-g9-drive-orin-launch/",
-    "publishedAt": "2022-09-21",
-    "accessedAt": "2026-07-17",
-    "sourceType": "official",
-    "reliability": "high",
-    "relatedEntityIds": [
-      "xpeng-g9-2025",
-      "nvidia-orin-x"
-    ],
-    "notes": "NVIDIA 官方博客，披露 G9 双 Orin、508 TOPS、交付时间等。"
-  },
-  {
     "id": "source-xiaomi-pilot",
     "title": "智能驾驶",
     "publisher": "小米汽车",
@@ -230,12 +200,13 @@
     "reliability": "high",
     "relatedEntityIds": [
       "xiaomi-yu7-2026",
-      "nvidia-thor"
+      "nvidia-thor",
+      "xiaomi-su7-2026"
     ],
-    "notes": "官方辅助驾驶页，披露小米实际装车辅助驾驶算力为700 TOPS，并说明采用NVIDIA DRIVE AGX Thor车载计算平台。"
+    "notes": "官方辅助驾驶页，披露新一代SU7与YU7等当前车型采用小米XLA辅助驾驶，并披露实际装车辅助驾驶算力为700 TOPS、NVIDIA DRIVE AGX Thor车载计算平台。"
   },
   {
-    "id": "source-xiaomi-su7",
+    "id": "source-xiaomi-su7-2026",
     "title": "新一代SU7",
     "publisher": "小米汽车",
     "url": "https://www.xiaomiev.com/su7",
@@ -244,9 +215,9 @@
     "sourceType": "official",
     "reliability": "high",
     "relatedEntityIds": [
-      "xiaomi-su7-2024"
+      "xiaomi-su7-2026"
     ],
-    "notes": "官方车型页；芯片搭载信息以 NVIDIA 官方新闻稿交叉验证。"
+    "notes": "当前官方车型页，作为新一代SU7车型存在与当前在售信息来源；辅助驾驶算力以小米官方智能驾驶页为准。"
   },
   {
     "id": "source-xiaomi-yu7",
@@ -264,19 +235,46 @@
     "notes": "官方车型页，披露 YU7 搭载 NVIDIA DRIVE AGX Thor 车载计算平台；装车算力以小米辅助驾驶页/配置表的700 TOPS为准。"
   },
   {
-    "id": "source-xpeng-g7-launch",
-    "title": "19.58万元起售，跨时代的AI汽车小鹏G7正式上市",
+    "id": "source-xpeng-g7-2026",
+    "title": "2026款小鹏G7 AI智能家庭SUV",
     "publisher": "小鹏汽车",
-    "url": "https://www.xiaopeng.com/news/company_news/5481.html",
-    "publishedAt": "2025-07-03",
+    "url": "https://www.xiaopeng.com/g7_2026.html",
+    "publishedAt": "2026-07-17",
     "accessedAt": "2026-07-17",
     "sourceType": "official",
     "reliability": "high",
     "relatedEntityIds": [
-      "xpeng-g7-ultra-2026",
-      "xpeng-turing-ai"
+      "xpeng-g7-ultra-2026"
     ],
-    "notes": "官方新闻披露小鹏G7 Ultra首发搭载3颗图灵AI芯片，整车有效算力2250 TOPS。"
+    "notes": "当前官方车型页，披露G7三颗图灵AI芯片与2250TOPS车端有效算力；优先级高于上市新闻。"
+  },
+  {
+    "id": "source-xpeng-g7-2026-config",
+    "title": "2026款小鹏G7参数配置表",
+    "publisher": "小鹏汽车",
+    "url": "https://www.xiaopeng.com/g7_2026/configuration.html",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-g7-ultra-2026"
+    ],
+    "notes": "当前官方配置表，披露不同选装包下辅助驾驶图灵AI芯片数量与有效算力。"
+  },
+  {
+    "id": "source-xpeng-g9-2026",
+    "title": "2026款小鹏G9 AI智能豪华SUV",
+    "publisher": "小鹏汽车",
+    "url": "https://www.xiaopeng.com/g9_2026.html",
+    "publishedAt": "2026-07-17",
+    "accessedAt": "2026-07-17",
+    "sourceType": "official",
+    "reliability": "high",
+    "relatedEntityIds": [
+      "xpeng-g9-2026-ultra"
+    ],
+    "notes": "当前官方车型页，披露2026款G9搭载三颗图灵AI芯片、全球第一车端有效算力2250TOPS。"
   },
   {
     "id": "source-xpeng-g9-2026-config",
@@ -294,21 +292,6 @@
     "notes": "官方配置页披露2026款G9标配辅助驾驶图灵AI芯片1颗，Ultra SE/Ultra选装包包含辅助驾驶图灵AI芯片2颗，Ultra选装包另含智能座舱图灵AI芯片1颗。"
   },
   {
-    "id": "source-xpeng-g9-config",
-    "title": "2025款G9参数配置表",
-    "publisher": "小鹏汽车",
-    "url": "https://www.xiaopeng.com/g92025/configuration.html",
-    "publishedAt": "2026-07-17",
-    "accessedAt": "2026-07-17",
-    "sourceType": "official",
-    "reliability": "high",
-    "relatedEntityIds": [
-      "xpeng-g9-2025",
-      "nvidia-orin-x"
-    ],
-    "notes": "官方配置页，列出 NVIDIA DRIVE Orin 超级计算平台 2 个、平台算力 508 TOPS。"
-  },
-  {
     "id": "source-xpeng-mona-m03-2026-config",
     "title": "小鹏MONA M03参数配置表",
     "publisher": "小鹏汽车",
@@ -324,33 +307,32 @@
     "notes": "官方配置表披露MONA M03 Max版1颗图灵AI芯片对应750 TOPS，Ultra SE版2颗图灵AI芯片对应1500 TOPS。"
   },
   {
-    "id": "source-xpeng-news-5355",
-    "title": "小鹏10年热爱之夜：小鹏MONA M03发布，多项核心技术首次亮相",
+    "id": "source-xpeng-p7-2026",
+    "title": "小鹏P7 未来AI豪华轿跑",
     "publisher": "小鹏汽车",
-    "url": "https://www.xiaopeng.com/news/company_news/5355.html",
-    "publishedAt": "2024-08-27",
+    "url": "https://www.xiaopeng.com/p7n.html",
+    "publishedAt": "2026-07-17",
     "accessedAt": "2026-07-17",
     "sourceType": "official",
     "reliability": "high",
     "relatedEntityIds": [
-      "xpeng-turing-ai"
+      "xpeng-p7-2026"
     ],
-    "notes": "官方新闻，披露图灵芯片流片、40核处理器、2个NPU、面向L4等信息。"
+    "notes": "当前官方车型页，披露最高搭载三颗图灵AI芯片、有效算力2250TOPS。"
   },
   {
-    "id": "source-xpeng-p7-launch",
-    "title": "21.98万元起售！全新小鹏P7正式上市，AI豪华轿跑驶入智能驾驶新纪元",
+    "id": "source-xpeng-p7-2026-config",
+    "title": "P7参数配置表",
     "publisher": "小鹏汽车",
-    "url": "https://www.xiaopeng.com/news/company_news/5494.html",
-    "publishedAt": "2025-08-27",
+    "url": "https://www.xiaopeng.com/p7n/configuration.html",
+    "publishedAt": "2026-07-17",
     "accessedAt": "2026-07-17",
     "sourceType": "official",
     "reliability": "high",
     "relatedEntityIds": [
-      "xpeng-p7-2026",
-      "xpeng-turing-ai"
+      "xpeng-p7-2026"
     ],
-    "notes": "官方新闻披露全新小鹏P7全系Ultra，标配3颗自研图灵AI芯片，整车有效算力2250 TOPS。"
+    "notes": "当前官方配置表，披露Ultra智能升级包共3颗图灵AI芯片、有效算力2250TOPS。"
   },
   {
     "id": "source-xpeng-turing-page",
@@ -364,6 +346,6 @@
     "relatedEntityIds": [
       "xpeng-turing-ai"
     ],
-    "notes": "官方产品页；页面未公开独立发布日期，publishedAt 取本次访问快照日期。"
+    "notes": "官方产品页；量产搭载和算力口径以当前车型页/配置表交叉确认。"
   }
 ]

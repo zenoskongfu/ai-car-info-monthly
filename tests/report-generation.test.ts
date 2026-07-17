@@ -12,5 +12,9 @@ describe("report generation", () => {
     expect(report).toContain("| 芯片 | 厂商 | 单芯片算力 | 精度 | 稀疏或稠密 | 算力说明 | 搭载车型 | 状态 |");
     expect(report).toContain("## 十、传闻和待确认信息");
     expect(report).toContain("不同精度");
+    expect(report).toContain("小米新一代SU7");
+    expect(report).toContain("700 TOPS");
+    expect(report).not.toContain("小米SU7、小鹏G9");
+    expect(report).not.toContain("小鹏图灵 AI 芯片记录为预量产/未确认量产上车");
   });
 });

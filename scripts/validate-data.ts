@@ -14,7 +14,9 @@ const addFormats = require("ajv-formats") as (ajv: AjvLike) => void;
 
 type Source = {
   id: string;
+  title: string;
   url: string;
+  publishedAt: string;
   sourceType: string;
   reliability: string;
 };
@@ -28,6 +30,7 @@ type Chip = {
 
 type Vehicle = {
   id: string;
+  modelYear: number;
   status: string;
   chipIds: string[];
   totalCompute: { calculationMethod: string; value: number | null };
@@ -83,6 +86,23 @@ function assertMassProductionSource(entityLabel: string, entityId: string, statu
   });
   if (!hasReliableSource) {
     throw new Error(`${entityLabel} ${entityId} is mass_production but lacks official/regulatory/high reliability source`);
+  }
+}
+
+function assertCurrentVehicleSourceFreshness(vehicle: Vehicle, sources: Map<string, Source>) {
+  if (vehicle.modelYear < 2026) return;
+  const vehicleSources = vehicle.sourceIds.map((sourceId) => sources.get(sourceId)).filter((source): source is Source => Boolean(source));
+  const hasCurrentOfficialSource = vehicleSources.some((source) => source.sourceType === "official" && source.publishedAt >= "2026-01-01");
+  if (!hasCurrentOfficialSource) {
+    throw new Error(`vehicle ${vehicle.id} is a 2026 current vehicle but lacks a current official source`);
+  }
+
+  const staleCurrentVehicleSource = vehicleSources.find((source) => {
+    const sourceText = `${source.id} ${source.title} ${source.url}`;
+    return /2024|2025款|g92025|suet|news\/company_news\/5355/.test(sourceText);
+  });
+  if (staleCurrentVehicleSource) {
+    throw new Error(`vehicle ${vehicle.id} uses stale current-model source ${staleCurrentVehicleSource.id}`);
   }
 }
 
@@ -162,6 +182,7 @@ export async function validateAll() {
   for (const vehicle of vehicles) {
     assertKnownSources("vehicle", vehicle.id, vehicle.sourceIds, sourceIds);
     assertMassProductionSource("vehicle", vehicle.id, vehicle.status, vehicle.sourceIds, sourceMap);
+    assertCurrentVehicleSourceFreshness(vehicle, sourceMap);
     for (const chipId of vehicle.chipIds) {
       if (!chipIds.has(chipId)) throw new Error(`vehicle ${vehicle.id} references missing chip ${chipId}`);
     }
