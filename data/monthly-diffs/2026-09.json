@@ -1,0 +1,58 @@
+{
+  "month": "2026-09",
+  "generatedAt": "2026-09-01",
+  "previousMonth": "2026-08",
+  "chips": {
+    "added": [
+      "black-sesame-a1000",
+      "horizon-journey6p",
+      "huawei-mdc610",
+      "li-auto-m100",
+      "nio-shenji-nx9031",
+      "nvidia-orin-x",
+      "nvidia-thor",
+      "xpeng-turing-ai"
+    ],
+    "updated": [],
+    "statusChanged": [],
+    "removed": []
+  },
+  "vehicles": {
+    "added": [
+      "aito-m9-2026",
+      "byd-han-2025",
+      "li-auto-l9-livis-2026",
+      "nio-et9-2025",
+      "xiaomi-su7-2026",
+      "xiaomi-yu7-2026",
+      "xpeng-g7-ultra-2026",
+      "xpeng-g9-2026-ultra",
+      "xpeng-mona-m03-ultra-se-2026",
+      "xpeng-p7-2026"
+    ],
+    "updated": [],
+    "statusChanged": [],
+    "removed": []
+  },
+  "platforms": {
+    "added": [
+      "byd-gods-eye",
+      "horizon-journey6",
+      "huawei-ads",
+      "li-auto-ad5",
+      "nvidia-drive-agx",
+      "xpeng-xngp"
+    ],
+    "updated": [],
+    "statusChanged": [],
+    "removed": []
+  },
+  "otaUpdates": {
+    "added": [
+      "ota-li-auto-livis-2026-roadmap"
+    ],
+    "updated": [],
+    "statusChanged": [],
+    "removed": []
+  }
+}
