@@ -2,7 +2,7 @@
 
 持续跟踪国内智能驾驶芯片、车型搭载、算力平台、辅助驾驶系统和量产进展。
 
-最新月报：[2026 年 07 月 月报总览](./docs/monthly/2026-07/)
+最新月报：[2026 年 10 月 月报总览](./docs/monthly/2026-10/)
 
 ## 项目用途
 
@@ -16,10 +16,13 @@
 
 ## 数据更新时间
 
-2026-07-17
+2026-10-01
 
 ## 月报入口
 
+- [2026 年 10 月 月报总览](./docs/monthly/2026-10/)
+- [2026 年 10 月 芯片篇](./docs/monthly/2026-10/chips.md)
+- [2026 年 10 月 装载车型篇](./docs/monthly/2026-10/vehicles.md)
 - [2026 年 07 月 月报总览](./docs/monthly/2026-07/)
 - [2026 年 07 月 芯片篇](./docs/monthly/2026-07/chips.md)
 - [2026 年 07 月 装载车型篇](./docs/monthly/2026-07/vehicles.md)
@@ -59,26 +62,6 @@ npm run generate
 ## 自动化运行方式
 
 GitHub Actions 每月 1 日北京时间约 8:00 触发，也支持 `workflow_dispatch` 手动运行。默认创建 `report/YYYY-MM` 分支并提交 Pull Request，不直接合并到 `main`。
-
-月报分支按月份命名，例如 `report/2026-07`、`report/2026-08`。这样每个月的自动更新都有独立分支和 PR，便于复核、回滚和保留历史。
-
-## 邮件通知
-
-当前邮件通知仅在本地手动发送，不由 GitHub Actions 自动发送。可使用 `scripts/send-report-email.py` 发送月报邮件，默认收件人为 `zenos.chen@foxmail.com`。
-
-本地发送时需要设置环境变量：
-
-- `SMTP_HOST`
-- `SMTP_USER`
-- `SMTP_PASSWORD`
-
-可选配置：
-
-- `SMTP_PORT`，默认 `465`
-- `SMTP_FROM`
-- `SMTP_SECURE`，默认 `true`
-
-GitHub Actions 目前只生成月报和 PR，不发送邮件。
 
 ## 数据可靠性原则
 
