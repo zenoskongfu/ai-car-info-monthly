@@ -7,5 +7,6 @@ describe("monthly diff", () => {
     expect(diff.chips.added.length).toBeGreaterThan(0);
     expect(diff.vehicles.added.length).toBeGreaterThan(0);
     expect(diff.month).toBe("2026-07");
+    expect(diff.previousMonth).toBeNull();
   });
 });

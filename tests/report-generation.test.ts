@@ -1,16 +1,17 @@
-import { readFile } from "node:fs/promises";
+import { readFile, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { generateReport } from "../scripts/generate-report.js";
 
 describe("report generation", () => {
   it("generates split monthly reports with required sections", async () => {
-    await generateReport("2026-07");
-    const overview = await readFile("docs/monthly/2026-07/index.md", "utf8");
-    const chips = await readFile("docs/monthly/2026-07/chips.md", "utf8");
-    const vehicles = await readFile("docs/monthly/2026-07/vehicles.md", "utf8");
+    const testMonth = "2099-12";
+    await generateReport(testMonth);
+    const overview = await readFile(`docs/monthly/${testMonth}/index.md`, "utf8");
+    const chips = await readFile(`docs/monthly/${testMonth}/chips.md`, "utf8");
+    const vehicles = await readFile(`docs/monthly/${testMonth}/vehicles.md`, "utf8");
 
-    expect(existsSync("docs/monthly/2026-07.md")).toBe(false);
+    expect(existsSync(`docs/monthly/${testMonth}.md`)).toBe(false);
     expect(overview).toContain("数据截止时间：");
     expect(overview).toContain("[芯片篇](./chips.md)");
     expect(overview).toContain("[装载车型篇](./vehicles.md)");
@@ -27,5 +28,6 @@ describe("report generation", () => {
     expect(vehicles).toContain("700 TOPS");
     expect(`${overview}\n${chips}\n${vehicles}`).not.toContain("小米SU7、小鹏G9");
     expect(`${overview}\n${chips}\n${vehicles}`).not.toContain("小鹏图灵 AI 芯片记录为预量产/未确认量产上车");
+    await rm(`docs/monthly/${testMonth}`, { recursive: true, force: true });
   });
 });

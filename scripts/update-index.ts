@@ -34,7 +34,7 @@ ${reports[0] ? `- [${monthTitle(latest)} 月报总览](${latestLink})\n- [${mont
 
 ## 历史月报
 
-${reports.length ? reports.map((month) => monthlyLinks(month, "./monthly/")).join("\n") : "- 暂无"}
+${reports.length > 1 ? reports.slice(1).map((month) => monthlyLinks(month, "./monthly/")).join("\n") : "- 暂无"}
 
 ## 数据概览
 
@@ -107,6 +107,26 @@ npm run generate
 ## 自动化运行方式
 
 GitHub Actions 每月 1 日北京时间约 8:00 触发，也支持 \`workflow_dispatch\` 手动运行。默认创建 \`report/YYYY-MM\` 分支并提交 Pull Request，不直接合并到 \`main\`。
+
+月报分支按月份命名，例如 \`report/2026-07\`、\`report/2026-08\`。这样每个月的自动更新都有独立分支和 PR，便于复核、回滚和保留历史。
+
+## 邮件通知
+
+当前邮件通知仅在本地手动发送，不由 GitHub Actions 自动发送。可使用 \`scripts/send-report-email.py\` 发送月报邮件，默认收件人为 \`zenos.chen@foxmail.com\`。
+
+本地发送时需要设置环境变量：
+
+- \`SMTP_HOST\`
+- \`SMTP_USER\`
+- \`SMTP_PASSWORD\`
+
+可选配置：
+
+- \`SMTP_PORT\`，默认 \`465\`
+- \`SMTP_FROM\`
+- \`SMTP_SECURE\`，默认 \`true\`
+
+GitHub Actions 目前只生成月报和 PR，不发送邮件。
 
 ## 数据可靠性原则
 

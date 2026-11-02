@@ -142,7 +142,7 @@
       "source-xpeng-g7-2026-config",
       "source-xpeng-turing-page"
     ],
-    "lastUpdated": "2026-07-17",
-    "notes": "图灵芯片尚未确认量产上车，平台记录同时保留现量产 Orin 与预研图灵。"
+    "lastUpdated": "2026-11-03",
+    "notes": "不同车型世代分别采用 Orin 与图灵 AI 芯片；当前 G7、G9、MONA M03、P7 官方车型页或配置表已确认图灵 AI 芯片量产上车。"
   }
 ]

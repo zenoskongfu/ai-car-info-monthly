@@ -41,6 +41,8 @@ function compareEntities<T extends Entity>(current: T[], previous: T[] | null) {
 
 export async function buildMonthlyDiff(month = currentReportMonth()): Promise<MonthlyDiff> {
   const previous = previousMonth(month);
+  const previousSnapshotPath = path.join(rootDir, `data/snapshots/${previous}`);
+  const hasPreviousSnapshot = existsSync(previousSnapshotPath);
   const chips = await readJson<Entity[]>("data/chips.json");
   const vehicles = await readJson<Entity[]>("data/vehicles.json");
   const platforms = await readJson<Entity[]>("data/platforms.json");
@@ -49,7 +51,7 @@ export async function buildMonthlyDiff(month = currentReportMonth()): Promise<Mo
   return {
     month,
     generatedAt: currentDate(),
-    previousMonth: previous,
+    previousMonth: hasPreviousSnapshot ? previous : null,
     chips: compareEntities(chips, await readSnapshot(previous, "chips")),
     vehicles: compareEntities(vehicles, await readSnapshot(previous, "vehicles")),
     platforms: compareEntities(platforms, await readSnapshot(previous, "platforms")),

@@ -123,7 +123,7 @@
       "source-li-auto-autodrive",
       "source-li-auto-l9-news-159"
     ],
-    "lastUpdated": "2026-07-17",
+    "lastUpdated": "2026-11-03",
     "notes": "L9 Livis 作为理想自研芯片代表车型跟踪；发布时间与交付时间来自理想官方新闻。"
   },
   {
@@ -212,7 +212,7 @@
       "source-xiaomi-su7-2026",
       "source-xiaomi-pilot"
     ],
-    "lastUpdated": "2026-07-17",
+    "lastUpdated": "2026-11-03",
     "notes": "当前月报按小米官网“新一代SU7”和小米官方智能驾驶页口径跟踪。"
   },
   {
@@ -255,7 +255,7 @@
       "source-xiaomi-yu7",
       "source-xiaomi-pilot"
     ],
-    "lastUpdated": "2026-07-17",
+    "lastUpdated": "2026-11-03",
     "notes": "当前官方车型页仍在售，按当前车型与小米智能驾驶页口径跟踪。"
   },
   {
@@ -300,7 +300,7 @@
       "source-xpeng-g7-2026",
       "source-xpeng-g7-2026-config"
     ],
-    "lastUpdated": "2026-07-17",
+    "lastUpdated": "2026-11-03",
     "notes": "官方称G7 Ultra为图灵AI芯片首发车型。"
   },
   {
@@ -344,7 +344,7 @@
       "source-xpeng-g9-2026",
       "source-xpeng-g9-2026-config"
     ],
-    "lastUpdated": "2026-07-17",
+    "lastUpdated": "2026-11-03",
     "notes": "作为当前2026款G9图灵芯片上车版本跟踪；已用当前车型页替换旧款Orin资料。"
   },
   {
@@ -387,7 +387,7 @@
     "sourceIds": [
       "source-xpeng-mona-m03-2026-config"
     ],
-    "lastUpdated": "2026-07-17",
+    "lastUpdated": "2026-11-03",
     "notes": "以当前MONA M03 2026配置表的Ultra SE作为图灵双芯代表版本跟踪。"
   },
   {
@@ -432,7 +432,7 @@
       "source-xpeng-p7-2026",
       "source-xpeng-p7-2026-config"
     ],
-    "lastUpdated": "2026-07-17",
+    "lastUpdated": "2026-11-03",
     "notes": "作为全新P7图灵三芯代表车型跟踪。"
   }
 ]

@@ -144,7 +144,7 @@ function rowsForDiff(diff: MonthlyDiff, chips: Chip[], vehicles: Vehicle[], plat
     const item = chipMap.get(id);
     if (item) {
       rows.push(
-        `| ${item.manufacturer} | 新增芯片 | ${item.name} | 首次纳入结构化跟踪 | ${compactComputeNote(item.compute, "官方未公开算力口径")} | ${formatStatus(item.status)} |`
+        `| ${item.manufacturer} | ${diff.previousMonth === null ? "基线芯片" : "新增芯片"} | ${item.name} | ${diff.previousMonth === null ? "当前结构化基线；非本月新增判定" : "首次纳入结构化跟踪"} | ${compactComputeNote(item.compute, "官方未公开算力口径")} | ${formatStatus(item.status)} |`
       );
     }
   }
@@ -152,7 +152,7 @@ function rowsForDiff(diff: MonthlyDiff, chips: Chip[], vehicles: Vehicle[], plat
     const item = vehicleMap.get(id);
     if (item) {
       rows.push(
-        `| ${item.brand} | 新增车型 | ${item.model} | 首次纳入结构化跟踪 | ${compactComputeNote(item.totalCompute, "官方未公开整车总算力口径")} | ${formatStatus(item.status)} |`
+        `| ${item.brand} | ${diff.previousMonth === null ? "基线车型" : "新增车型"} | ${item.model} | ${diff.previousMonth === null ? "当前结构化基线；非本月新增判定" : "首次纳入结构化跟踪"} | ${compactComputeNote(item.totalCompute, "官方未公开整车总算力口径")} | ${formatStatus(item.status)} |`
       );
     }
   }
@@ -160,7 +160,7 @@ function rowsForDiff(diff: MonthlyDiff, chips: Chip[], vehicles: Vehicle[], plat
     const item = platformMap.get(id);
     if (item) {
       rows.push(
-        `| ${item.vendor} | 新增平台 | ${item.name} | 首次纳入结构化跟踪 | ${compactComputeNote(item.compute, "平台级不汇总算力")} | ${formatStatus(item.status)} |`
+        `| ${item.vendor} | ${diff.previousMonth === null ? "基线平台" : "新增平台"} | ${item.name} | ${diff.previousMonth === null ? "当前结构化基线；非本月新增判定" : "首次纳入结构化跟踪"} | ${compactComputeNote(item.compute, "平台级不汇总算力")} | ${formatStatus(item.status)} |`
       );
     }
   }
@@ -168,7 +168,7 @@ function rowsForDiff(diff: MonthlyDiff, chips: Chip[], vehicles: Vehicle[], plat
     const item = otaMap.get(id);
     if (item) {
       rows.push(
-        `| ${item.manufacturer} | 新增OTA | ${item.system} ${item.version} | 首次纳入结构化跟踪 | 不涉及新增算力口径 | ${formatStatus(item.status)} |`
+        `| ${item.manufacturer} | ${diff.previousMonth === null ? "基线OTA" : "新增OTA"} | ${item.system} ${item.version} | ${diff.previousMonth === null ? "当前结构化基线；非本月新增判定" : "首次纳入结构化跟踪"} | 不涉及新增算力口径 | ${formatStatus(item.status)} |`
       );
     }
   }
@@ -230,7 +230,14 @@ function renderOverviewReport(
   const sourceMap = new Map(sources.map((source) => [source.id, source]));
   const addedCount = diff.chips.added.length + diff.vehicles.added.length + diff.platforms.added.length + diff.otaUpdates.added.length;
   const summary =
-    addedCount === 0
+    diff.previousMonth === null
+      ? [
+          "- 本期缺少可用的上月结构化快照，差异表按当前基线展示，不能把全部条目解释为本月新增。",
+          "- 本月复核官方当前页面，未发现可确认的新算力、装车或交付状态变化。",
+          "- 修正 XNGP 平台备注：小鹏图灵 AI 芯片已由当前车型页和配置表确认量产上车。",
+          "- 不同算力精度、稀疏/稠密口径和单芯片/整车总算力继续分开记录，不做绝对排名。"
+        ].join("\n")
+      : addedCount === 0
       ? "- 本月未发现经过可靠来源确认的重大芯片或车型平台变化。"
       : [
           `- 首次建立结构化跟踪数据，新增 ${diff.chips.added.length} 个芯片/计算平台实体、${diff.vehicles.added.length} 个车型实体。`,
@@ -296,22 +303,22 @@ ${uncertain}
 
 ## 七、相比上月的变化
 
-### 新增
+### ${diff.previousMonth === null ? "当前基线（非本月新增）" : "新增"}
 
 - 芯片/平台：${diff.chips.added.map((id) => displayName(chips.find((chip) => chip.id === id) ?? { id })).join("、") || "无"}
 - 车型：${diff.vehicles.added.map((id) => displayName(vehicles.find((vehicle) => vehicle.id === id) ?? { id })).join("、") || "无"}
 
 ### 更新
 
-- 本次为首次初始化，暂无相对上月的数据字段更新。
+- ${diff.previousMonth === null ? "缺少上月结构化快照，无法生成严格的逐字段月度差异。" : "详见本月关键变化表。"}
 
 ### 状态变化
 
-- 本次为首次初始化，暂无状态迁移。
+- 本月未发现经官方来源确认的状态迁移。
 
 ### 数据修正
 
-- 本次为首次初始化，暂无历史数据修正。
+- 修正 XNGP 平台备注中“图灵芯片尚未确认量产上车”的过时描述；当前多款小鹏车型官方页/配置表已确认量产搭载。
 
 ### 已撤回或无法确认的信息
 
